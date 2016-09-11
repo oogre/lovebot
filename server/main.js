@@ -3,13 +3,13 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(function () {
 	if(Users.find().count() == 0){
-		Images.addFile("/Users/ogre/Work/6102/The Love Bot/lovebot/public/lovebot.jpg", {
+		Images.addFile(process.env.PWD+"/public/lovebot.jpg", {
 			fileName: 'thelovebot.jpg',
 			type: 'image/jpeg',
 			meta: {}
 		}, function(error, picture){
 			if(error)return console.log(error);
-			Audios.addFile("/Users/ogre/Work/6102/The Love Bot/lovebot/public/lovebot.ogg", {
+			Audios.addFile(process.env.PWD+"/public/lovebot.ogg", {
 				fileName: 'lovebot.ogg',
 				type: 'audio/ogg',
 				meta: {}
