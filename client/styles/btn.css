@@ -1,0 +1,97 @@
+.btn-group-center {
+    text-align: center;
+}
+
+.btn-group-center.btn-group {
+    margin: 0 auto; 
+    text-align: center;
+    width: inherit;
+    display: inline-block;
+}
+
+@-webkit-keyframes redPulse {
+  from { -webkit-box-shadow: 0 0 20px #f33; }
+  50% { -webkit-box-shadow: 0 0 10px #555; }
+  to { -webkit-box-shadow: 0 0 20px #f33; }
+}
+@-webkit-keyframes greenPulse {
+  from { background-color: #5cb85c; -webkit-box-shadow: 0 0 18px #8e8; }
+  50% { background-color: #5cd75c; -webkit-box-shadow: 0 0 10px #5cb75c; }
+  to { background-color: #5cb85c; -webkit-box-shadow: 0 0 18px #8e8; }
+}
+@-webkit-keyframes whitePulse {
+  from { text-shadow: 0 0 20px #fff; }
+  50% { text-shadow: 0 0 10px #555; }
+  to { text-shadow: 0 0 20px #fff; }
+}
+.btn.active.focus, 
+.btn.active:focus, 
+.btn.focus, 
+.btn:active.focus, 
+.btn:active:focus, 
+.btn:focus
+{
+	outline:0;
+}
+
+.btn.disabled, .btn[disabled]{
+  opacity: 0.3;
+}
+
+.btn.btn-success:hover, .btn.btn-success.disabled:hover, .btn.btn-success[disabled]:hover{
+  background-color: #00ebaa;
+  box-shadow: none;
+}
+.btn.btn-danger:hover, .btn.btn-danger.disabled:hover, .btn.btn-danger[disabled]:hover{
+   background-color: #aeaeae;
+   box-shadow: none;
+}
+
+.danger.glow {
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-out;
+}
+.glow {
+  /*border-radius: 20px;*/
+  -webkit-animation-name: whitePulse;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-out;
+}
+
+.btn.btn-VCR{   
+    font-family: "VCR OSD MONO";
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 25px;
+    font-size: 1.3em;
+}.btn.btn-pink{
+  color:#fff;
+    border: none;
+    background-color: #ff008d;
+    box-shadow: -5px 5px 0 #ffea24;
+}
+.btn.btn-success{
+    background-color: #00ebaa;
+}
+.btn.btn-danger{
+  background-color: #aeaeae;
+}
+.btn{
+    margin: 50px;
+    border-radius: 40px;
+    padding: 20px;
+    border: none;
+    text-shadow: none;
+    min-width: 200px;
+    font-family: "CircularStd";
+    font-size: 1.7em;
+}
+.btn.btn-lovebot{
+  background-color: #0051f3;
+    color: #fff;
+    font-size: 2em;
+    white-space: normal;
+}

@@ -1,0 +1,20 @@
+.start-custom-btn{
+	position: absolute;
+    top: 60%;
+    left: 60%;
+}
+
+#start .progress{
+	height: 3px;
+    border-radius: 0px;
+    margin-bottom: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+#start .progress-bar{
+	-webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}

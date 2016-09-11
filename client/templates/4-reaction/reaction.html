@@ -1,0 +1,199 @@
+<template name="reaction">
+	<div id="reaction">
+		<div class="matched-user-picture-wrapper">
+			<div class="matched-user-picture" style="background-image:url({{matchPicture}})"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 pull-bottom">
+				<img src="LB_avatar.gif" class="img-responsive"/>
+			</div>
+			<ul class="lovebot list-unstyled col-xs-10 pull-bottom">
+				<li data-time="2000">
+					<div class="btn btn-lovebot">
+						Le Love Bot veut en savoir plus
+					</div>
+				</li>
+				<li data-time="3000">
+					<div class="btn btn-lovebot">
+						Expliquez votre choix et enregistrez <br/>un message lorsque le voyant s'allume
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						3
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						2
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						1
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<ul class="list-unstyled col-xs-10 pull-bottom">
+				<li data-time="0" data-action="record">
+					<div class="btn btn-danger pull-right">
+						<ol class="recorder list-inline">
+							<li>
+								<span class="glyphicon record danger" aria-hidden="true"></span>
+							</li>
+							<li class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+								</div>
+							</li>
+							<li class="time">
+								
+							</li>
+						</ol>
+					</div>
+				</li>
+				
+			</ul>
+			<div class="col-xs-1 pull-bottom">
+				<img src="{{userPicture}}" class="img-responsive"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 pull-bottom">
+				<img src="LB_avatar.gif" class="img-responsive"/>
+			</div>
+			<ul class="lovebot list-unstyled col-xs-10 pull-bottom">
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Super, merci {{userFirstname}}
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Nous avons des données à vous partager
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Voici ce que {{matchFirstname}} pense d'une autre personne
+					</div>
+				</li>
+				<li data-time="0" data-action="play">
+					<div class="btn btn-lovebot play">
+						<audio id="audioMatch" src="{{audio}}"></audio>
+						<ol class="player list-inline">
+							<li>
+								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+							</li>
+							<li class="progress">
+								<div class="progress-bar progress-bar-danger" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+								</div>
+							</li>
+							<li class="time">
+								
+							</li>
+						</ol>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 pull-bottom">
+				<img src="LB_avatar.gif" class="img-responsive"/>
+			</div>
+			<ul class="lovebot list-unstyled col-xs-10 pull-bottom">
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Alors ?
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<ul class="list-unstyled col-xs-10 pull-bottom">
+				<li data-time="0" data-action="confirmation">
+					<div class="btn-group-center pull-right" >
+						<div class="" role="group">
+							<button class="no btn btn-lg btn-danger">Je change d'avis</button>
+							<button class="yes btn btn-lg btn-success">Je confirme mon choix</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="col-xs-1 pull-bottom">
+				<img src="{{userPicture}}" class="img-responsive"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 pull-bottom">
+				<img src="LB_avatar.gif" class="img-responsive"/>
+			</div>
+			<ul class="lovebot list-unstyled col-xs-10 pull-bottom">
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Super, merci {{userFirstname}}
+					</div>
+				</li>
+				<li data-time="1000">
+					<div class="btn btn-lovebot">
+						Le Love Bot souhaite envoyer votre<br />déclaration d'amour à l'élu(e). C'est oui ?
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="row">
+			<ul class="list-unstyled col-xs-10 pull-bottom">
+				<li data-time="0"  data-action="sendIt">
+					<div class="btn-group-center pull-right" >
+						<div class="" role="group">
+							<button class="nono btn btn-lg btn-danger">Je ne le veux pas</button>
+							<button class="yesyes btn btn-lg btn-success">Je le veux</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="col-xs-1 pull-bottom">
+				<img src="{{userPicture}}" class="img-responsive"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1 pull-bottom">
+				<img src="LB_avatar.gif" class="img-responsive"/>
+			</div>
+			<ul class="lovebot list-unstyled col-xs-10 pull-bottom">
+				<li data-time="2000">
+					<div class="btn btn-lovebot">
+						Merci d'accorder votre<br/>confiance au Love Bot.
+					</div>
+				</li>
+				<li data-time="2000">
+					<div class="btn btn-lovebot">
+						L'élu(e) vous contactera par email ...
+					</div>
+				</li>
+				<li data-time="3000">
+					<div class="btn btn-lovebot">
+						...
+					</div>
+				</li>
+				<li data-time="0" data-action="reload">
+					<div class="btn btn-lovebot">
+						... si tel est son désir
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--
+		<div class="btn-group-center" >
+			<h3>Pourquoi ?</h3>
+			<div class="btn-group" role="group">
+				<button class="rec btn btn-lg btn-danger" >
+					<span class="glyphicon glyphicon-record" aria-hidden="true"></span> Rec
+				</button>
+			</div>
+		</div>
+		-->
+	</div>
+	<canvas id="heartAttack" width="{{width}}px" height="{{height}}px"></canvas>
+</template>

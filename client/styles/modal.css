@@ -1,0 +1,36 @@
+.modal .modal-content{
+	background-color: #c7c7c7;
+    border-radius: 0;
+    border: solid 10px #c7c7c7;
+}
+.modal .modal-header{
+	color: #fff;
+    font-family: monospace;
+    padding: 5px 5px 0px 20px;
+    border:none;
+	background-image: -webkit-gradient( linear, right bottom, left bottom, color-stop(0, #00FFFF), color-stop(1, #0004FF) );
+    background-image: -o-linear-gradient(left, #00FFFF 0%, #0004FF 100%);
+    background-image: -moz-linear-gradient(left, #00FFFF 0%, #0004FF 100%);
+    background-image: -webkit-linear-gradient(left, #00FFFF 0%, #0004FF 100%);
+    background-image: -ms-linear-gradient(left, #00FFFF 0%, #0004FF 100%);
+    background-image: linear-gradient(to left, #00FFFF 0%, #0004FF 100%);
+}
+
+.modal .modal-header .close{
+	background-color: #c7c7c7;
+    opacity: 1;
+    padding: 0px 6px 0px 5px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.modal .modal-header .close:focus{
+	outline: 0;
+}
+.modal .btn{
+	margin: 20px;
+    border-radius: 0;
+    background: #e1e1e1;
+    border: solid 5px #4d4d4d;
+    padding: 10px;
+    color: #000;
+}

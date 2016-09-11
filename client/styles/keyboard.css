@@ -1,0 +1,41 @@
+.ui-keyboard{
+	height : 300px;
+	top: auto;
+	bottom: 0;
+
+}
+.ui-keyboard div {
+    font-size: 2.3em;
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo) span{
+	top: 0;
+	left: 0em;
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo) {
+	min-width: 3em;
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=enter]{
+	min-width: 5.2em;	
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=shift]{
+    min-width: 2.3em;
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=meta1]{
+    min-width: 5.3em;
+}
+.ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=meta2]{
+    min-width: 4.7em;
+}
+.ui-keyboard-button[data-value=normal]{
+	min-width: 5.30em;
+}
+
+.ui-keyboard-keyset.ui-keyboard-keyset-meta2 .ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=meta1]{
+	min-width: 4.7em;
+}
+.ui-keyboard-keyset.ui-keyboard-keyset-meta2 .ui-keyboard-button[data-value=normal]{
+	min-width: 5.4em;
+}
+.ui-keyboard-keyset.ui-keyboard-keyset-meta1 .ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=enter]{
+	min-width: 5.05em;
+}

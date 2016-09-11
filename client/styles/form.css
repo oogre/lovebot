@@ -1,0 +1,6 @@
+form .error .badge.error.hide{
+	display: inline-block!important;
+}
+form .success .badge.success.hide{
+	display: inline-block!important;
+}

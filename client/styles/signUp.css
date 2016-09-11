@@ -1,0 +1,76 @@
+#signUp .user-picture-wrapper{
+	position: absolute;
+    top: 0;
+    left: -3px;
+    height: 100%;
+    width: 56%;
+    overflow: hidden;
+}
+#signUp .user-picture{
+	height: 101%;
+	width: 101%;
+	background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    filter: blur(3px);
+    background-position: center center;
+}
+
+#signUp form{
+	padding: 100px 75px 0 0;
+	position: absolute;
+    top: 0;
+    left: 55%;
+    width: 45%;
+    height: 100%;
+    background-image: -webkit-gradient( linear, left bottom, right top, color-stop(0.13, #F7D5B3), color-stop(1, #FDA9C9) );
+    background-image: -o-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -moz-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -webkit-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -ms-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: linear-gradient(to left bottom, #F7D5B3 13%, #FDA9C9 100%);
+}
+
+#signUp .form-control{
+	font-family:'CircularStd';
+	background: none;
+    border: none;
+    border-bottom: solid 2px #fff;
+    box-shadow: none;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+#signUp .form-control::-webkit-input-placeholder {
+   color: rgba(255, 255, 255, 0.8);
+}
+
+#signUp .form-control:-moz-placeholder { /* Firefox 18- */
+   color: rgba(255, 255, 255, 0.8);  
+}
+
+#signUp .form-control::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(255, 255, 255, 0.8);  
+}
+
+#signUp .form-control:-ms-input-placeholder {  
+   color: rgba(255, 255, 255, 0.8);  
+}
+
+#signUp textarea.form-control{
+	border-radius: 0;
+	overflow-y: scroll;
+	color: rgb(85, 85, 85);
+    font-size: 1em;
+    max-height: 350px;
+    margin: 0px 0px 25px;
+    height: 524px;
+    background: rgb(255, 255, 255);
+    resize : none;
+}
+#signUp .checkbox.form-control{
+	border: none;
+	font-size: 1.5em;
+}

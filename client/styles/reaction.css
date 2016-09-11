@@ -1,0 +1,49 @@
+#reaction{
+	margin-bottom: 50px;
+}
+#reaction .btn{
+	margin-bottom: 0;
+	min-width: 100px;
+	margin-left: 0;
+	margin-right: 0;
+}
+#reaction ul{
+	margin-bottom: 0;
+    padding-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+}
+#reaction .row ul.lovebot>li, 
+#reaction .row{
+	display: none;
+}
+#reaction img{
+	border-radius: 100%;
+}
+
+#reaction .progress{
+    padding: 0;
+    margin-bottom: 7px;
+    height: 10px;
+    width: 300px;
+    left: 0;
+}
+#reaction .recorder .progress-bar-danger{
+    background: red;
+}
+
+#reaction .progress-bar{
+	-webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+#reaction .glyphicon.record{
+	width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 15px;
+}
+#reaction .time{
+	min-width: 30px;
+}

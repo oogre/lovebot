@@ -1,0 +1,37 @@
+<template name="confirmModal">
+	<div class="modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<audio id="audioWarn" src="/warn.wav" preload="auto"></audio>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					lovebot.exe
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-6">
+							<img src="alert.png" class="img-responsive"/>
+						</div>
+						<div class="col-xs-6">
+							<h3 class="message"></h3>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="col-xs-6">
+							<button type="button" class="btn btn-lg pull-left no">
+								Retour
+							</button>
+						</div>
+						<div class="col-xs-6">
+							<button type="button" class="btn btn-lg pull-left yes" data-dismiss="modal" aria-label="Close">
+								Valider
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,12 @@
+<template name="camera">
+	<div id="record">
+		<audio id="audioSuccess" src="/success.wav" preload="auto"></audio>
+		<div id="media-error"><h3>Please enable the camera and microphone to record</h3></div>
+	    {{#if supportsMedia}}
+	        {{onLoad}}
+	        <video id="live_video" width="960" height="720" autoplay muted></video>
+	    {{else}}
+	        Sorry - your browser does not support user media (camera & microphone)
+	    {{/if}}
+	</div>
+</template>

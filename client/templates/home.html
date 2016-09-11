@@ -1,0 +1,19 @@
+<template name="home">
+	{{>record}}
+</template>
+
+<template name="record">
+    <div id="record" hidden="true">
+        {{#if supportsMedia}}
+            {{onLoad}}
+            <video id="live_video" width="1440" height="720" autoplay muted></video>
+            
+            <button id="start-recording">Record</button>
+            <button id="stop-recording" disabled="true">Stop</button>
+            <div id="uploading" hidden="true">The video is converting and uploading</div>
+        {{else}}
+            Sorry - your browser does not support user media (camera & microphone)
+        {{/if}}
+    </div>
+    <div id="media-error"><h3>Please enable the camera and microphone to record</h3></div>
+</template>

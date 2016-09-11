@@ -1,0 +1,25 @@
+<template name="match">
+	<div id="match">
+		<div class="matched-user-picture-wrapper">
+			<div class="matched-user-picture" style="background-image:url({{match.picture}})">
+				{{match.firstname}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="btn-group-center" >
+				<div class="" role="group">
+					<button class="change btn btn-lg btn-link"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></button>
+					<button class="change btn btn-lg btn-link"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="btn-group-center" >
+				<div class="" role="group">
+					<button class="no btn btn-lg btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+					<button class="yes btn btn-lg btn-success"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

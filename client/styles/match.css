@@ -1,0 +1,45 @@
+#match{
+    /*margin-top: 100%;*/
+}
+#match .btn.prev{
+    padding-right: 50%;
+}
+#match .btn.btn-link{
+    color:#fff;
+}
+.matched-user-picture-wrapper{
+	position: absolute;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+.matched-user-picture{
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    text-align: center;
+    font-size: 3em;
+    text-transform: capitalize;
+    padding-top: 10px;
+    color: #fff;
+    text-shadow: 0 0 5px black;
+}
+#match .btn{
+    font-size: 11em;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    padding: 0;
+}
+#match .btn .glyphicon{
+    line-height: 1.3;
+}
+#match .btn.btn-success{
+    padding-right: 10px;
+    padding-top: 10px;
+}
