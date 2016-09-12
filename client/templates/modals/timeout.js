@@ -12,6 +12,7 @@ Template.timeoutModal.rendered = function(){
 	$(document).on('keyup', Meteor.resetTimeoutFnc);
 	$('#timeoutModal')
 	.on('show.bs.modal', function(e){
+		$("#audioError").prop("currentTime",0);
 		$("#audioError").trigger('play');
 	})
 	.on('shown.bs.modal', function (e) {
@@ -22,7 +23,7 @@ Template.timeoutModal.rendered = function(){
 				$("#alertModal")
 				.off('hidden.bs.modal')
 				.modal("hide");
-				Router.go("/");
+				Meteor.reload();
 			}, 750);	
 		}, Session.get(Meteor.TIMEOUT));
 		tic = setInterval(function(){
@@ -30,6 +31,7 @@ Template.timeoutModal.rendered = function(){
 		}, 20);
 	})
 	.on('hidden.bs.modal', function (e) {
+		$("#audioError").trigger('pause');
 		clearTimeout(timeout);
 		clearInterval(tic);
 		timeout = tic = undefined;

@@ -21,6 +21,7 @@ Template.confirmModal.events = {
 }
 
 var openconfirmModal = function(e){
+	Meteor.resetTimeoutFnc();
 	if($(e.target).hasClass("modal")){
 		$("#confirmModal")
 		.clone()

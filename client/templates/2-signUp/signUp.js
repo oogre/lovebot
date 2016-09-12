@@ -1,4 +1,16 @@
-
+Template.signUp.next = function(data){
+	$("#audioClick1").prop("currentTime",0).trigger("play");
+	
+	Meteor.call("findOrCreateUser", data, function(error, data){
+		if(error){
+			return console.log(error);
+		}
+		Session.set(Meteor.USERID, data);
+		setTimeout(function(){
+			Router.go("match");
+		}, 1000)
+	});
+}
 Template.signUp.helpers({
 	picture : function(){
 		if (Session.equals(Meteor.PICTURE, false)){
@@ -45,6 +57,8 @@ Template.signUp.events = {
 		
 		checkInput(target);
 
+		$("#audioClick3").prop("currentTime",0).trigger("play");
+
 		if($(".success input:not([type=submit])").length == $("input:not([type=submit])").length)
 		{
 			$("input[type=submit]").removeClass("disabled").removeAttr("disabled");
@@ -75,13 +89,7 @@ Template.signUp.events = {
 		if( Match.test(data.firstname, Meteor.NonEmptyString) &&
 			Match.test(data.email, Meteor.ValidEmail)
 		) {
-			Meteor.call("findOrCreateUser", data, function(error, data){
-				if(error){
-					return console.log(error);
-				}
-				Session.set(Meteor.USERID, data);
-				Router.go("match");
-			});
+			Template.signUp.next(data);
 		}
 		return false;
 	}
@@ -89,6 +97,7 @@ Template.signUp.events = {
 
 
 Template.signUp.rendered = function(){
+	var audios = $("#signUp #keyboardSounds audio");
 	Meteor.keyboard = $("input:not([type=submit]):not([type=checkbox])").keyboard({
 		display: {
 			'bksp'   : '\u2190',
@@ -139,6 +148,8 @@ Template.signUp.rendered = function(){
 			at2: 'center bottom'
 		},
 		change: function(e, keyboard, el, txt) {
+			var current = $(audios.get(e.action.charCodeAt(0)%audios.length));
+			current.prop("currentTime",0).trigger("play");
 			Meteor.resetTimeoutFnc();
 			return txt;
 		},

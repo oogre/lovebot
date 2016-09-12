@@ -1,6 +1,7 @@
 var currentUpload;
 Template.start.events = {
 	'click button.next': function (e) {
+		$("#audioClicPhoto").trigger("play");
 		var file = window.savePicture(function(err, file){
 			if(err)return console.log(err);
 			var upload = Images.insert({

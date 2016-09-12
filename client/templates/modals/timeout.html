@@ -1,25 +1,30 @@
 <template name="timeoutModal">
 	<div class="modal fade" id="timeoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<audio id="audioError" src="/error.wav" preload="auto"></audio>
+		<audio id="audioError" src="sounds/effects/tictac.wav" preload="auto"></audio>
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="progress">
-						<div id="progressBar" class="progress-bar progress-bar-danger" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-						</div>
-				</div>
 				<div class="modal-header">
 					<button type="button" class="close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h2 class="modal-title" id="myModalLabel">Êtes-vous là?</h2>
+					lovebot.exe : Êtes-vous là?
+					<div class="progress">
+						<div id="progressBar" class="progress-bar progress-bar-danger" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+						</div>
+					</div>
 				</div>
 				<div class="modal-body">
-					<h3>
-						Redémarrage dans <span class="label label-danger">{{timer}}</span>
-					</h3>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg btn-success pull-left">Je suis là!</button>
+					<div class="row">
+						<div class="col-xs-6">
+							<img src="timeout.png" class="img-responsive"/>
+						</div>
+						<div class="col-xs-6">
+							<h3>
+								Redémarrage dans <span class="label label-danger">{{timer}}</span>
+							</h3>
+							<button type="button" class="btn btn-lg btn-success pull-left">Je suis là!</button>
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>

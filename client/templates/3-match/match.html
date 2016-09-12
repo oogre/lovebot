@@ -1,5 +1,9 @@
 <template name="match">
 	<div id="match">
+		<audio id="audio1" src="sounds/effects/whoosh.wav" preload="auto"></audio>
+		<audio id="audio2" src="sounds/effects/click2.wav" preload="auto"></audio>
+		<audio id="audio3" src="sounds/effects/erreur2.wav" preload="auto"></audio>
+		
 		<div class="matched-user-picture-wrapper">
 			<div class="matched-user-picture" style="background-image:url({{match.picture}})">
 				{{match.firstname}}
@@ -8,13 +12,13 @@
 		<div class="row">
 			<div class="btn-group-center" >
 				<div class="" role="group">
-					<button class="change btn btn-lg btn-link"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></button>
-					<button class="change btn btn-lg btn-link"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+					<button class="change btn btn-lg btn-link pull-left"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></button>
+					<button class="change btn btn-lg btn-link pull-right"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="btn-group-center" >
+			<div class="btn-group-center validate" >
 				<div class="" role="group">
 					<button class="no btn btn-lg btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 					<button class="yes btn btn-lg btn-success"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>

@@ -1,7 +1,15 @@
+Template.pictValidation.next = function(audioClick){
+	if(!audioClick)audioClick="audioClick1";
+	$("#"+audioClick).trigger("play");
+	$("#pictValidation img").fadeOut(1000, function(){
+		Router.go("signUp");
+	});
+};
+
 Template.pictValidation.helpers({
 	picture : function(){
 		if (Session.equals(Meteor.PICTURE, false)){
-			Router.go("start");
+			Meteor.reload();
 		}
 		return Session.get(Meteor.PICTURE);
 	}
@@ -25,17 +33,12 @@ Template.pictValidation.events = {
 		})
 		.modal("show")
 		.one('hidden.bs.modal', function (event) {
-			$(e.target)
-			.attr("disabled", "disabled")
-			.removeClass("prev")
-			.removeClass("btn-danger")
-			.addClass("btn-default")
-			.html("Clickez là ->");
+			Template.pictValidation.next("audioClick2");
 		})
 		.find(".message")
 		.html(getRandomPrevSentence());
 	},
 	'click button.next': function (e) {
-		Router.go("signUp");
+		Template.pictValidation.next("audioClick1");
 	}
 };

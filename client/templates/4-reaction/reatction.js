@@ -3,15 +3,19 @@ var openModal = function(e){
 };
 var playFlag = false;
 var confirmFlag = false;
+var confFlag = true;
 var sendItFlag = false;
+var tchataudio;
 var superFnc = function(){
-	var currentRow = $("#reaction .row:not(:visible)").first();
+	var currentRow = $("#reaction .tchat .row:not(:visible)").first();
 	var children = currentRow.find("ul>li");
 	var currentChild = $(children.get(0));
 	currentChild.show();
 	currentRow.slideDown(function(){
 		action(currentChild.attr("data-action"));
 	});
+	tchataudio.prop("currentTime",0).trigger("play");
+	
 	var time=0;
 	children.each(function(index, elem){
 		var currentChild = $(elem);
@@ -24,6 +28,7 @@ var superFnc = function(){
 					nextChild.slideDown(function(){
 						action(nextChild.attr("data-action"));
 					});
+					tchataudio.prop("currentTime",0).trigger("play");
 				}else{
 					superFnc();
 				}
@@ -38,12 +43,15 @@ var action = function(method){
 	switch(method){
 		case "record":
 			setTimeout(function(){
+				Meteor.resetTimeoutFnc();
+				$("#cling").prop("currentTime",0).trigger("play");
 				recordAudio(superFnc);
 			}, 1000);
 		break;
 		case "play":
 			t = setInterval(function(){
 					if(playFlag){
+						Meteor.resetTimeoutFnc();
 						superFnc();
 						clearInterval(t);
 					}
@@ -52,14 +60,21 @@ var action = function(method){
 		case "confirmation" : 
 			t = setInterval(function(){
 					if(confirmFlag){
+						$("#tictac").trigger("pause");
+						Meteor.resetTimeoutFnc();
+						$("#click1").prop("currentTime",0).trigger("play");
 						superFnc();
 						clearInterval(t);
+					}else if(confFlag){
+						confFlag= false;
+						$("#tictac").prop("currentTime",0).trigger("play");
 					}
 				}, 200);
 		break;
 		case "sendIt" : 
 			t = setInterval(function(){
 					if(sendItFlag){
+						Meteor.resetTimeoutFnc();
 						new Processing($("#heartAttack").show().get(0), window.sketch);
 						superFnc();
 						clearInterval(t);
@@ -68,7 +83,7 @@ var action = function(method){
 		break;
 		case "reload" : 
 			setTimeout(function(){
-				document.location.host = document.location.host;
+				Meteor.reload();
 			}, 10000);
 		break;
 	}
@@ -135,7 +150,13 @@ var recordAudio = function(callback){
 
 
 Template.reaction.rendered = function(){
-	superFnc();
+	tchataudio = $(".tchat audio#ploc");
+	$(".banner").slideDown(function(){
+		superFnc();	
+	}).find("audio").prop("currentTime",0).trigger("play");
+	setTimeout(function(){
+		$(".banner").slideUp();
+	}, 7000);
 }
 
 Template.reaction.helpers({
@@ -161,7 +182,7 @@ Template.reaction.helpers({
 
 Template.reaction.events = {
 	'click .btn.play': function (e) {
-
+		Meteor.resetTimeoutFnc();
 		$(".btn.play").removeClass("play");
 		$("#confirmModal")
 		.modal({
@@ -196,12 +217,16 @@ Template.reaction.events = {
 		.html("Si vous écoutez cet enregistrement le love bot enverra une notification à "+Session.get(Meteor.MATCH).firstname+". Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
+		Meteor.resetTimeoutFnc();
 		confirmFlag = true;
 	},
 	'click .btn.no': function (e) {
+		Meteor.resetTimeoutFnc();
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
+		$("#yeah").prop("currentTime",0).trigger("play");
+		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");
 		sendItFlag = true;
 		Meteor.call("sendEmail", {
@@ -210,6 +235,12 @@ Template.reaction.events = {
 		});
 	},
 	'click .btn.nono': function (e) {
-		Router.go("sadBye");
+		$("#timeout").prop("currentTime",0).trigger("play");
+		setTimeout(function(){
+			Meteor.resetTimeoutFnc();
+			Router.go("sadBye");
+		}, 1000);
+		Meteor.resetTimeoutFnc();
+		
 	}
 };

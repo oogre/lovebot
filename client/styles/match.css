@@ -41,5 +41,23 @@
 }
 #match .btn.btn-success{
     padding-right: 10px;
-    padding-top: 10px;
+    padding-top: 8px;
+    background: red;
+}
+
+#match .btn.btn-danger{
+    background: blue;   
+    padding-top: 4px;
+}
+#match .btn.no, #match .btn.yes{
+    box-shadow: 0 0 30px #111;
+    font-size: 8em;
+    min-width: 100px;
+    width: 150px;
+    height: 150px;
+}
+#match .validate{
+    position: absolute;
+    width: 100%;
+    left: 0;
 }

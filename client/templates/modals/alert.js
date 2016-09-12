@@ -18,6 +18,7 @@ Template.alert.events = {
 }
 
 var openModal = function(e){
+	 Meteor.resetTimeoutFnc();
 	if($(e.target).hasClass("modal")){
 		$("#alertModal")
 		.clone()
