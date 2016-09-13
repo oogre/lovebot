@@ -1,9 +1,30 @@
+
+body{
+    background-image: url(bgslow.gif), url(bgveryslow.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: hard-light;
+    background-position: bottom left;
+}
+.container.main{
+  background: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity : 0.9;
+}
+
+.container.main.fixe{
+  background: none;
+  opacity : 1;
+}
 html, body, .container.main, section{
   height : 100%;
   margin: 0;
   padding: 0;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 .vertical-center {
   max-height: 100%;

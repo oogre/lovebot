@@ -1,11 +1,26 @@
 var openModal = function(e){
 	Template.confirmModal.openAlertModal(null, "Votre spontanéité est votre plus belle qualité!");
 };
+
 var playFlag = false;
 var confirmFlag = false;
 var confFlag = true;
 var sendItFlag = false;
 var tchataudio;
+
+Template.reaction.glitch = function(){
+	var elem= $(".matched-user-picture");
+	elem
+	.glitch({
+		amount: Math.floor(Math.random()*7),
+		complete : function(canvas){
+			elem.css({
+				"backgroundImage" : "url("+canvas.toDataURL("image/jpeg", 0.5)+")"
+			});
+		}
+	});
+}
+
 var superFnc = function(){
 	var currentRow = $("#reaction .tchat .row:not(:visible)").first();
 	var children = currentRow.find("ul>li");
@@ -111,8 +126,8 @@ var recordAudio = function(callback){
 				console.log(error);
 			} else {
 				var data = {
-					emitter : Session.get(Meteor.USERID),
-					receiver : Session.get(Meteor.MATCHID),
+					emitter : Session.get(Meteor.USER)._id,
+					receiver : Session.get(Meteor.USER_2)._id,
 					audio : fileObj._id
 				}
 				$(".glyphicon.record.danger").removeClass("glow");
@@ -148,35 +163,60 @@ var recordAudio = function(callback){
 	});
 };
 
-
 Template.reaction.rendered = function(){
 	tchataudio = $(".tchat audio#ploc");
+
+
+	$(".container.main")
+	.addClass("fixe");
+	$(".matched-user-picture")
+	.css({
+		"backgroundImage": "url("+Session.get(Meteor.USER_2).picture+")",
+	});
+
 	$(".banner").slideDown(function(){
 		superFnc();	
+		Template.reaction.glitch();
 	}).find("audio").prop("currentTime",0).trigger("play");
 	setTimeout(function(){
 		$(".banner").slideUp();
+		Template.reaction.glitch();
 	}, 7000);
 }
 
 Template.reaction.helpers({
-	matchPicture : function(){
-		return Session.get(Meteor.MATCHPICTURE);
-	},
-	userPicture : function(){
-		return Session.get(Meteor.PICTURE);
-	},
 	userFirstname : function(){
 		return Session.get(Meteor.USER).firstname;
 	},
-	matchFirstname : function(){
-		return Session.get(Meteor.MATCH).firstname;	
+	userPicture : function(){
+		return Session.get(Meteor.USER).picture;
+	},
+	user2Firstname : function(){
+		return Session.get(Meteor.USER_2).firstname;	
+	},
+	user2Picture : function(){
+		return Session.get(Meteor.USER_2).picture;
+	},
+	user3Firstname : function(){
+		return Session.get(Meteor.USER_3).firstname;
+	},
+	user3Picture : function(){
+		return Session.get(Meteor.USER_3).picture;
+	},
+	matchAudio : function(){
+		return Session.get(Meteor.MATCH).audio;
 	},
 	width : function(){
 		return $(document).width();
 	},
 	height : function(){
 		return $(document).height();
+	},
+	yes : function(){
+		return Session.get(Meteor.LIKE) ? "yes" : "no";
+	},
+	no : function(){
+		return Session.get(Meteor.LIKE) ? "no" : "yes";
 	}
 });
 
@@ -217,21 +257,37 @@ Template.reaction.events = {
 		.html("Si vous écoutez cet enregistrement le love bot enverra une notification à "+Session.get(Meteor.MATCH).firstname+". Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
+		var data = {
+			emitter : Session.get(Meteor.USER)._id,
+			receiver : Session.get(Meteor.USER_2)._id,
+			like : true
+		}
+		Meteor.call("upsertRelation", data);
 		Meteor.resetTimeoutFnc();
 		confirmFlag = true;
 	},
 	'click .btn.no': function (e) {
+		var data = {
+			emitter : Session.get(Meteor.USER)._id,
+			receiver : Session.get(Meteor.USER_2)._id,
+			like : false
+		}
+		Meteor.call("upsertRelation", data);
 		Meteor.resetTimeoutFnc();
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
-		$("#yeah").prop("currentTime",0).trigger("play");
+		$("#yeah").prop("currentTime",0).trigger("play")
+		.get(0).addEventListener('ended', function(){
+			$("#happy").prop("currentTime",0).trigger("play");
+		});
+
 		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");
 		sendItFlag = true;
 		Meteor.call("sendEmail", {
-			emitter : Session.get(Meteor.USERID),
-			receiver : Session.get(Meteor.MATCHID),
+			emitter : Session.get(Meteor.USER)._id,
+			receiver : Session.get(Meteor.USER_2)._id,
 		});
 	},
 	'click .btn.nono': function (e) {

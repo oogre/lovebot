@@ -1,11 +1,24 @@
+var counter = 0;
+Template.signUp.glitch = function(){
+	var elem= $(".user-picture");
+	elem
+	.glitch({
+		amount: Math.floor(Math.random()*7),
+		complete : function(canvas){
+			elem.css({
+				"backgroundImage" : "url("+canvas.toDataURL("image/jpeg", 0.5)+")"
+			});
+		}
+	});
+}
 Template.signUp.next = function(data){
 	$("#audioClick1").prop("currentTime",0).trigger("play");
 	
-	Meteor.call("findOrCreateUser", data, function(error, data){
+	Meteor.call("findOrCreateUser", data, function(error, _id){
 		if(error){
 			return console.log(error);
 		}
-		Session.set(Meteor.USERID, data);
+		Session.set(Meteor.USER, {_id : _id});
 		setTimeout(function(){
 			Router.go("match");
 		}, 1000)
@@ -52,27 +65,39 @@ function checkInput(target){
 };
 
 Template.signUp.events = {
+	"change input[type=radio]" : function () {
+		$("#audioClick3").prop("currentTime",0).trigger("play");
+		Template.signUp.glitch();
+	},
+	"change select" : function () {
+		$("#audioClick3").prop("currentTime",0).trigger("play");
+		Template.signUp.glitch();
+	},
 	'change input[type=checkbox]': function (e) {
-		var target = $(e.target);
-		
-		checkInput(target);
-
 		$("#audioClick3").prop("currentTime",0).trigger("play");
 
-		if($(".success input:not([type=submit])").length == $("input:not([type=submit])").length)
+		var target = $(e.target);
+		checkInput(target);
+
+		
+		Template.signUp.glitch();
+		if($(".success input:not([type=submit]):not([type=radio])").length == $("input:not([type=submit]):not([type=radio])").length)
 		{
 			$("input[type=submit]").removeClass("disabled").removeAttr("disabled");
 		}
 		else{
 			$("input[type=submit]").addClass("disabled").attr("disabled", "disabled");
 		}
-	},'blur input:not([type=submit])': function (e) {
-
+	},
+	'blur input:not([type=submit])': function (e) {
+		if(counter++ %3==0){
+			Template.signUp.glitch();
+		}
 		var target = $(e.target);
 		
 		checkInput(target);
 
-		if($(".success input:not([type=submit])").length == $("input:not([type=submit])").length)
+		if($(".success input:not([type=submit]):not([type=radio])").length == $("input:not([type=submit]):not([type=radio])").length)
 		{
 			$("input[type=submit]").removeClass("disabled").removeAttr("disabled");
 		}
@@ -84,8 +109,12 @@ Template.signUp.events = {
 		var data = {
 			firstname : e.target.firstname.value,
 			email : e.target.email.value,
-			picture : Session.get(Meteor.PICTUREID)
-		}
+			picture : Session.get(Meteor.PICTUREID),
+			gender : e.target.gender.value,
+			sex : e.target.sex.value,
+			age : e.target.age.value
+		};
+		
 		if( Match.test(data.firstname, Meteor.NonEmptyString) &&
 			Match.test(data.email, Meteor.ValidEmail)
 		) {
@@ -95,10 +124,16 @@ Template.signUp.events = {
 	}
 };
 
-
 Template.signUp.rendered = function(){
+	counter = 0;
+	$(".container.main")
+	.addClass("fixe")
+	.css({
+		"background": "none",
+		"opacity": 1 
+	});
 	var audios = $("#signUp #keyboardSounds audio");
-	Meteor.keyboard = $("input:not([type=submit]):not([type=checkbox])").keyboard({
+	Meteor.keyboard = $("input:not([type=submit]):not([type=checkbox]):not([type=radio])").keyboard({
 		display: {
 			'bksp'   : '\u2190',
 			'enter'  : 'return',

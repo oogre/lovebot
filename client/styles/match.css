@@ -49,6 +49,9 @@
     background: blue;   
     padding-top: 4px;
 }
+#match .btn.change{
+    text-shadow: 0 0 30px #111;
+}
 #match .btn.no, #match .btn.yes{
     box-shadow: 0 0 30px #111;
     font-size: 8em;

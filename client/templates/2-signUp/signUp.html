@@ -28,7 +28,7 @@
 							<span class="badge alert-success success hide">Valide</span>
 						</label>
 						-->
-						<input class="form-control input-lg" type="text" id="firstname" name="firstname" placeholder="Prénom" value="" autocomplete="off">
+						<input class="form-control input-lg" type="text" id="firstname" name="firstname" placeholder="Prénom" value="" autocomplete="off" spellcheck="false">
 					</div>
 				</div>
 			</fieldset>
@@ -41,18 +41,114 @@
 							<span class="badge alert-success success hide">Valide</span>
 						</label>
 						-->
-						<input class="form-control input-lg" type="email" id="email" name="email" placeholder="Adresse e-mail" value="" autocomplete="off">
+						<input class="form-control input-lg" type="email" id="email" name="email" placeholder="Adresse e-mail" value="" autocomplete="off" spellcheck="false">
 					</div>
 				</div>
 			</fieldset>
 			<fieldset class="row">
 				<div class="form-group col-xs-offset-1 col-xs-10">
+					<div class="input-group col-xs-12 gender">
+						<div class="row">
+							<!--<label class="input-group-addon" for="firstname" >
+								Prénom
+								<span class="badge alert-danger error hide">erreur</span>
+								<span class="badge alert-success success hide">Valide</span>
+							</label>
+							-->
+							<div class="col-xs-4">
+								<label class="radio-inline lab">
+									Genre :
+								</label>
+							</div>
+							<div class="col-xs-8">
+								<div class="row">
+									<div class="col-xs-6">
+										<label class="radio-inline">
+											<input type="radio" name="gender" value="1"> Homme
+										</label>
+									</div>
+									<div class="col-xs-6">
+										<label class="radio-inline">
+											<input type="radio" name="gender" value="0"> Femme
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="row">
+				<div class="form-group col-xs-offset-1 col-xs-10">
+					<div class="input-group col-xs-12 gender">
+						<div class="row">
+							<!--<label class="input-group-addon" for="firstname" >
+								Prénom
+								<span class="badge alert-danger error hide">erreur</span>
+								<span class="badge alert-success success hide">Valide</span>
+							</label>
+							-->
+							<div class="col-xs-4">
+								<label class="radio-inline lab">
+									Genre :
+								</label>
+							</div>
+							<div class="col-xs-8">
+								<div class="row">
+									<div class="col-xs-6">
+										<label class="radio-inline">
+											<input type="radio" name="sex" value="1"> Homo
+										</label>
+									</div>
+									<div class="col-xs-6">
+										<label class="radio-inline">
+											<input type="radio" name="sex" value="0"> Hetero
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+
+			<fieldset class="row">
+				<div class="form-group col-xs-offset-1 col-xs-10">
+					<div class="input-group col-xs-12 gender">
+						<div class="row">
+							<!--<label class="input-group-addon" for="firstname" >
+								Prénom
+								<span class="badge alert-danger error hide">erreur</span>
+								<span class="badge alert-success success hide">Valide</span>
+							</label>
+							-->
+							<div class="col-xs-4">
+								<label class="radio-inline lab">
+									Age :
+								</label>
+							</div>
+							<div class="col-xs-8">
+								<select name="age" class="form-control">
+									<option disabled selected value="">choisissez votre age</option>
+									<option value="15-17">de 15 à 17 ans</option>
+									<option value="18-24">de 18 à 24 ans</option>
+									<option value="25-34">de 25 à 34 ans</option>
+									<option value="35-49">de 35 à 49 ans</option>
+									<option value="50-64">de 50 à 64 ans</option>
+									<option value="65+">plus de 65 ans</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="row">
+				<div class="form-group col-xs-offset-1 col-xs-10">
 					<div class="input-group col-xs-12">
-						<textarea class="form-control input-lg" readonly>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</textarea>
+						<textarea class="form-control input-lg" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
 						<div class="checkbox form-control">
 						  <label>
 						    <input type="checkbox" id="blankCheckbox" name="checkin" aria-label="...">

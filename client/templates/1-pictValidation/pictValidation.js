@@ -1,8 +1,22 @@
+Template.pictValidation.glitch = function(callback){
+	var elem= $("#pictValidation img");
+	elem
+	.glitch({
+		amount: Math.floor(Math.random()*7),
+		complete : function(canvas){
+			elem.attr("src", canvas.toDataURL("image/jpeg", 0.5));
+			callback();
+		}
+	});
+}
+
 Template.pictValidation.next = function(audioClick){
 	if(!audioClick)audioClick="audioClick1";
 	$("#"+audioClick).trigger("play");
-	$("#pictValidation img").fadeOut(1000, function(){
-		Router.go("signUp");
+	Template.pictValidation.glitch(function(){
+		setTimeout(function(){
+			Router.go("signUp");
+		}, 1000);
 	});
 };
 
@@ -42,3 +56,11 @@ Template.pictValidation.events = {
 		Template.pictValidation.next("audioClick1");
 	}
 };
+
+
+Template.pictValidation.rendered = function(){
+	$(".container.main")
+	.css({
+		"opacity": 1 
+	});
+}

@@ -45,6 +45,7 @@
 }
 #reaction img{
 	border-radius: 100%;
+    border: solid 1px #fff;
 }
 
 #reaction .progress{

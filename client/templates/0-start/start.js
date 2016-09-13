@@ -27,8 +27,6 @@ Template.start.events = {
 						Session.set(Meteor.PICTUREID, fileObj._id);
 						Router.go("pictValidation");
 					}, 20);
-					
-					//
 				}
 			});
 			upload.start();

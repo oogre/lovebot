@@ -11,12 +11,28 @@
 	width: 101%;
 	background-repeat: no-repeat;
     background-size: cover;
-    -webkit-filter: blur(3px);
+  /*  -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
-    filter: blur(3px);
+    filter: blur(3px);*/
     background-position: center center;
 }
-
+#signUp input[type=radio]{
+    margin-top: 15px;
+}
+#signUp .gender label.lab{
+    border-bottom: solid 2px #fff;
+    border-radius: 0;
+}
+#signUp .gender label{
+    font-family: 'CircularStd';
+    /* background: none; */
+    border: none;
+    
+    box-shadow: none;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 25px;
+    font-size: 2em;
+}
 #signUp form{
 	padding: 100px 75px 0 0;
 	position: absolute;
@@ -42,6 +58,10 @@
     margin-bottom: 25px;
     font-size: 2em;
 }
+#signUp select.form-control{
+    border: none;
+    width: 100%;
+}
 
 #signUp .form-control::-webkit-input-placeholder {
    color: rgba(255, 255, 255, 0.8);
@@ -64,11 +84,12 @@
 	overflow-y: scroll;
 	color: rgb(85, 85, 85);
     font-size: 1em;
-    max-height: 350px;
+    max-height: 150px;
     margin: 0px 0px 25px;
-    height: 524px;
+    height: 150px;
     background: rgb(255, 255, 255);
     resize : none;
+    border: none;
 }
 #signUp .checkbox.form-control{
 	border: none;
