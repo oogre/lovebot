@@ -69,9 +69,13 @@ Template.signUp.events = {
 		$("#audioClick3").prop("currentTime",0).trigger("play");
 		Template.signUp.glitch();
 	},
-	"change select" : function () {
+	"change select" : function (e) {
 		$("#audioClick3").prop("currentTime",0).trigger("play");
+		$(e.target).css({
+			"color": "rgba(255, 255, 255, 1)"	
+		});
 		Template.signUp.glitch();
+		
 	},
 	'change input[type=checkbox]': function (e) {
 		$("#audioClick3").prop("currentTime",0).trigger("play");

@@ -80,9 +80,13 @@
   background-color: #aeaeae;
 }
 .btn{
-    margin: 50px;
+    border-radius: 50px;
+    padding: 30px 88px;
+    /*
     border-radius: 40px;
     padding: 20px;
+    */
+    margin: 50px;
     border: none;
     text-shadow: none;
     min-width: 200px;

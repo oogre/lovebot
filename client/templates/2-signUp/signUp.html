@@ -48,32 +48,44 @@
 			<fieldset class="row">
 				<div class="form-group col-xs-offset-1 col-xs-10">
 					<div class="input-group col-xs-12 gender">
-						<div class="row">
-							<!--<label class="input-group-addon" for="firstname" >
-								Prénom
-								<span class="badge alert-danger error hide">erreur</span>
-								<span class="badge alert-success success hide">Valide</span>
-							</label>
-							-->
-							<div class="col-xs-4">
-								<label class="radio-inline lab">
-									Genre :
-								</label>
-							</div>
-							<div class="col-xs-8">
-								<div class="row">
-									<div class="col-xs-6">
-										<label class="radio-inline">
-											<input type="radio" name="gender" value="1"> Homme
-										</label>
-									</div>
-									<div class="col-xs-6">
-										<label class="radio-inline">
-											<input type="radio" name="gender" value="0"> Femme
-										</label>
-									</div>
-								</div>
-							</div>
+						
+						<!--<label class="input-group-addon" for="firstname" >
+							Prénom
+							<span class="badge alert-danger error hide">erreur</span>
+							<span class="badge alert-success success hide">Valide</span>
+						</label>
+						-->
+						<div class="box col-xs-12">
+							<select name="age" class="form-control">
+								<option disabled selected value="">Age</option>
+								<option value="15-17">de 15 à 17 ans</option>
+								<option value="18-24">de 18 à 24 ans</option>
+								<option value="25-34">de 25 à 34 ans</option>
+								<option value="35-49">de 35 à 49 ans</option>
+								<option value="50-64">de 50 à 64 ans</option>
+								<option value="65+">plus de 65 ans</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="row">
+				<div class="form-group col-xs-offset-1 col-xs-10">
+					<div class="input-group col-xs-12 gender">
+						<!--<label class="input-group-addon" for="firstname" >
+							Prénom
+							<span class="badge alert-danger error hide">erreur</span>
+							<span class="badge alert-success success hide">Valide</span>
+						</label>
+						-->
+						
+						<div class="box col-xs-12">
+							<select name="gender" class="form-control">
+								<option disabled selected value="">Genre</option>
+								<option value="1">Homme</option>
+								<option value="0">Femme</option>
+								<option value="autre">Autre</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -82,68 +94,31 @@
 			<fieldset class="row">
 				<div class="form-group col-xs-offset-1 col-xs-10">
 					<div class="input-group col-xs-12 gender">
-						<div class="row">
+						
 							<!--<label class="input-group-addon" for="firstname" >
 								Prénom
 								<span class="badge alert-danger error hide">erreur</span>
 								<span class="badge alert-success success hide">Valide</span>
 							</label>
 							-->
-							<div class="col-xs-4">
-								<label class="radio-inline lab">
-									Genre :
-								</label>
-							</div>
-							<div class="col-xs-8">
-								<div class="row">
-									<div class="col-xs-6">
-										<label class="radio-inline">
-											<input type="radio" name="sex" value="1"> Homo
-										</label>
-									</div>
-									<div class="col-xs-6">
-										<label class="radio-inline">
-											<input type="radio" name="sex" value="0"> Hetero
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</fieldset>
-
-
-			<fieldset class="row">
-				<div class="form-group col-xs-offset-1 col-xs-10">
-					<div class="input-group col-xs-12 gender">
-						<div class="row">
-							<!--<label class="input-group-addon" for="firstname" >
-								Prénom
-								<span class="badge alert-danger error hide">erreur</span>
-								<span class="badge alert-success success hide">Valide</span>
-							</label>
-							-->
-							<div class="col-xs-4">
-								<label class="radio-inline lab">
-									Age :
-								</label>
-							</div>
-							<div class="col-xs-8">
-								<select name="age" class="form-control">
-									<option disabled selected value="">choisissez votre age</option>
-									<option value="15-17">de 15 à 17 ans</option>
-									<option value="18-24">de 18 à 24 ans</option>
-									<option value="25-34">de 25 à 34 ans</option>
-									<option value="35-49">de 35 à 49 ans</option>
-									<option value="50-64">de 50 à 64 ans</option>
-									<option value="65+">plus de 65 ans</option>
+							<div class="box col-xs-12">
+								<select name="sex" class="form-control">
+									<option disabled selected value="">Orientation sexuelle</option>
+									<option value="Hétérosexuel">Hétérosexuel</option>
+									<option value="Homosexuel">Homosexuel</option>
+									<option value="Bisexuel">Bisexuel</option>
+									<option value="Pansexuel">Pansexuel</option>
+									<option value="Asexuel">Asexuel</option>
+									<option value="Autre">Autre</option>
 								</select>
+								
 							</div>
-						</div>
 					</div>
 				</div>
 			</fieldset>
+
+
+			
 
 			<fieldset class="row">
 				<div class="form-group col-xs-offset-1 col-xs-10">
