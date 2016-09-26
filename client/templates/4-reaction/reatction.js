@@ -1,5 +1,5 @@
 var openModal = function(e){
-	Template.confirmModal.openAlertModal(null, "Votre spontanéité est votre plus belle qualité!");
+	Template.confirmModal.openAlertModal(null, "Votre spontanéité est votre plus belle qualité!", "blue");
 };
 
 var playFlag = false;
@@ -101,10 +101,14 @@ var action = function(method){
 				Meteor.reload();
 			}, 10000);
 		break;
+		case "pauseTheLoop" : 
+			$("audio.loop").trigger("pause");
+		break;
 	}
 }
 
 var recordAudio = function(callback){
+	$("audio.loop").trigger("pause");
 	$(".glyphicon.record.danger").addClass("glow");
 	window.recordAudio(function(err, file){
 		if(err)return console.log(err);
@@ -125,20 +129,27 @@ var recordAudio = function(callback){
 			if (error) {
 				console.log(error);
 			} else {
+
 				var data = {
 					emitter : Session.get(Meteor.USER)._id,
 					receiver : Session.get(Meteor.USER_2)._id,
 					audio : fileObj._id
 				}
 				$(".glyphicon.record.danger").removeClass("glow");
-
 				setTimeout(function(){
 					Meteor.call("updateRelationWithAudio", data, function(err, data){
 						if(err)return console.log(err);
 						console.log(data);
 					});
 				}, 20);
+
 				$("#confirmModal")
+				.find("img[src='alert.png']")
+				.attr("src", "icone_son.png")
+				.end()
+				.find(".btn.yes")
+				.html("Merci")
+				.end()
 				.modal({
 					backdrop: 'static',
 		  			keyboard: false
@@ -150,10 +161,12 @@ var recordAudio = function(callback){
 				.find(".no").one("click", openModal).end()
 				.find(".yes").one("click", function(e){
 					$("#confirmModal").find(".no").off("click", openModal);
+					$("audio.loop").trigger("play");
 					callback();
 				}).end()
 				.find(".message")
-				.html("Votre message a été enregistré avec succès");
+				.html("Votre message a été enregistré avec succès")
+				.end();
 			}
 		});
 		upload.start();
@@ -222,6 +235,7 @@ Template.reaction.helpers({
 
 Template.reaction.events = {
 	'click .btn.play': function (e) {
+		$("audio.loop").trigger("pause");
 		Meteor.resetTimeoutFnc();
 		$(".btn.play").removeClass("play");
 		$("#confirmModal")
@@ -234,8 +248,15 @@ Template.reaction.events = {
 		})
 		.find(".no").one("click", function(e){
 			$("#confirmModal").modal("hide");
+			$("audio.loop").trigger("play");
 			playFlag = true;
 		}).end()
+		.find(".btn.yes")
+		.html("Oui")
+		.end()
+		.find(".btn.no")
+		.html("Non")
+		.end()
 		.find(".yes").one("click", function(e){
 			$(".glyphicon.glyphicon-play").addClass("glow");
 			$("#audioMatch").trigger('play');
@@ -248,6 +269,7 @@ Template.reaction.events = {
 			}, 20);
 			$("#audioMatch").get(0).addEventListener('ended', function(){
 				clearInterval(time);
+				$("audio.loop").trigger("play");
 				$(".glyphicon.glyphicon-play").removeClass("glow");
 				playFlag = true;
 			});
@@ -277,10 +299,9 @@ Template.reaction.events = {
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
-		$("#yeah").prop("currentTime",0).trigger("play")
-		.get(0).addEventListener('ended', function(){
-			$("#happy").prop("currentTime",0).trigger("play");
-		});
+		$("audio.loop").trigger("pause");
+		$("#happy").prop("currentTime",0).trigger("play");
+		$("#yeah").prop("currentTime",0).trigger("play");
 
 		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");

@@ -58,12 +58,9 @@
 						<div class="box col-xs-12">
 							<select name="age" class="form-control">
 								<option disabled selected value="">Age</option>
-								<option value="15-17">de 15 à 17 ans</option>
-								<option value="18-24">de 18 à 24 ans</option>
-								<option value="25-34">de 25 à 34 ans</option>
-								<option value="35-49">de 35 à 49 ans</option>
-								<option value="50-64">de 50 à 64 ans</option>
-								<option value="65+">plus de 65 ans</option>
+								{{#each ages}}
+								<option value="{{this}}">{{this}} ans</option>
+								{{/each}}
 							</select>
 						</div>
 					</div>

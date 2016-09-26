@@ -7,7 +7,7 @@ Session.setDefault(Meteor.PICTUREID, false);
 
 
 Meteor.ACTIVETIMEOUT			= "activeTimeout";
-Session.setDefault(Meteor.ACTIVETIMEOUT, 100000);
+Session.setDefault(Meteor.ACTIVETIMEOUT, 10000000);
 
 
 Meteor.TIMEOUT			= "timeout";

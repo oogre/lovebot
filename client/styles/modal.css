@@ -1,7 +1,27 @@
+.modal.blue .modal-content{
+    background-color: #0051f3;
+    border-color: #0051f3;
+    color : #fff;
+
+}
+.modal.blue .modal-header {
+    background-color: #F0F;
+    background-image: none;
+}
+.modal.blue .btn{
+    background: #003bb3;
+    border-color: #fff;
+    color: #fff;
+}
+
 .modal .modal-content{
 	background-color: #c7c7c7;
     border-radius: 1px;
     border: solid 10px #c7c7c7;
+}
+
+.modal .modal-body{
+    font-family: "CourierNewBold";
 }
 .modal .modal-header{
 	color: #fff;

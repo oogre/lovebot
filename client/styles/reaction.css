@@ -18,6 +18,10 @@
 #reaction .row{
 	display: none;
 }
+#reaction .btn{
+    text-align: left;
+}
+
 #reaction .banner{
     z-index: 10;
     display: none;
@@ -35,7 +39,6 @@
 
 #reaction .banner img{
     max-height: 100px;
-    border-radius: 0;
 }
 #reaction .banner .status{
     color: green;
@@ -57,6 +60,13 @@
 }
 #reaction .recorder .progress-bar-danger{
     background: red;
+}
+#reaction [data-action='play'] .progress-bar-danger{
+    background: blue;
+}
+
+#reaction [data-action='play'] .btn.btn-lovebot{
+    background-color:#F0F;
 }
 
 .progress-bar{

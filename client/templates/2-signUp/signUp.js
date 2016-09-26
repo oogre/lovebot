@@ -30,6 +30,13 @@ Template.signUp.helpers({
 			Router.go("start");
 		}
 		return Session.get(Meteor.PICTURE);
+	},
+	ages : function(){
+		var ages = [];
+		for(var i = 18 ; i < 100 ; i ++){
+			ages.push(i);
+		}
+		return ages;
 	}
 });
 

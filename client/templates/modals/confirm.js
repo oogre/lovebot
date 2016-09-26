@@ -48,18 +48,19 @@ var openconfirmModal = function(e){
 	}
 }
 
-Template.confirmModal.openAlertModal = function(e, message){
+Template.confirmModal.openAlertModal = function(e, message, className){
 	if(e == null || $(e.target).hasClass("modal")){
 		$("#alertModal")
 		.clone()
 		.removeAttr("id")
+		.addClass(className)
 		.find("#audioWarn").trigger('play').end()
 		.modal({
 			backdrop: 'static',
 			keyboard: false
 		})
 		.on("click", function(e){
-			Template.confirmModal.openAlertModal(e, message);
+			Template.confirmModal.openAlertModal(e, message, className);
 		})
 		.modal("show")
 		.one('hidden.bs.modal', function (event) {
