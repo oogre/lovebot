@@ -74,6 +74,9 @@
 #signUp select option{
     color: rgb(85, 85, 85);
 }
+#signUp select option[disabled]{
+    color: rgb(85, 85, 85, 0.7);
+}
 #signUp .box {
     border-bottom: solid 2px #fff;
     margin-bottom: 25px;
