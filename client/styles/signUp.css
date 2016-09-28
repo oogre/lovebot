@@ -63,12 +63,17 @@
     font-size: 2em;
 }
 #signUp select.form-control{
+    padding: 0;
+}
+#signUp select.form-control{
     border: none;
     width: 100%;
     margin-bottom: 10px;
-    /*color: rgba(255, 255, 255, 0.9);*/
+    color: rgba(255, 255, 255, 0.9);
 }
-
+#signUp select option{
+    color: rgb(85, 85, 85);
+}
 #signUp .box {
     border-bottom: solid 2px #fff;
     margin-bottom: 25px;
