@@ -107,3 +107,14 @@
 	border: none;
 	font-size: 1.5em;
 }
+
+
+#signUp .btn-fushia[disabled]{
+    background-color: #c7c7c7;
+
+}
+
+#signUp .btn-fushia{
+    background-color: #ff008d;
+    color: #fff;
+}

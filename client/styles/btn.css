@@ -20,9 +20,9 @@
   to { background-color: #5cb85c; -webkit-box-shadow: 0 0 18px #8e8; }
 }
 @-webkit-keyframes whitePulse {
-  from { text-shadow: 0 0 20px #fff; }
-  50% { text-shadow: 0 0 10px #555; }
-  to { text-shadow: 0 0 20px #fff; }
+  from { text-shadow: 0 0 20px rgba(255, 255, 255, 1.0); }
+  50% { text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+  to { text-shadow: 0 0 20px rgba(255, 255, 255, 1.0); }
 }
 .btn.active.focus, 
 .btn.active:focus, 

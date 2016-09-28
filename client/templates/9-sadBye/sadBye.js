@@ -1,8 +1,6 @@
 Template.sadBye.rendered = function(){
 	$("audio.loop").trigger("pause");
-	setTimeout(function(){
+	$("#audio3").get(0).addEventListener('ended', function(){
 		Meteor.reload();
-	}, 15000);
-
-
+	});
 };

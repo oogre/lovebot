@@ -30,8 +30,7 @@ Template.pictValidation.helpers({
 });
 
 var prevSentences = [
-	"Les algorythmes de \"The LOVEBOT\" vous trouve ravissant",
-	"Les algorythmes de \"The LOVEBOT\" vous trouve ravissante",
+	"Les algorythmes du LOVEBOT vous trouve splendide",
 	"Notre système trouve cette photo très réussie"
 ]
 function getRandomPrevSentence(){

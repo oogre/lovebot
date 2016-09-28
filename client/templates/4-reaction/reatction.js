@@ -97,9 +97,9 @@ var action = function(method){
 				}, 200);
 		break;
 		case "reload" : 
-			setTimeout(function(){
+			$("#happy").get(0).addEventListener('ended', function(){
 				Meteor.reload();
-			}, 10000);
+			});
 		break;
 		case "pauseTheLoop" : 
 			$("audio.loop").trigger("pause");
@@ -171,7 +171,10 @@ var recordAudio = function(callback){
 		});
 		upload.start();
 	}, function(time, percent){
-		$("#reaction .recorder .time").html(Math.round(time/1000));
+		var sec = Math.round(time / 1000);
+		var millis = Math.round((time % 1000)/10);
+		millis = s.lpad(millis, 2, "0")
+		$("#reaction .recorder .time").html(sec+":"+millis);
 		$("#reaction .recorder .progress-bar").css({width : percent+"%"});
 	});
 };
@@ -263,7 +266,13 @@ Template.reaction.events = {
 			var t0 = new Date().getTime();
 			var time = setInterval(function(){
 				var currentTime = new Date().getTime() - t0;
-				$("#reaction .player .time").html(Math.round(currentTime / 1000));
+
+				var sec = Math.round(currentTime / 1000);
+				var millis = Math.round((currentTime % 1000)/10);
+				millis = s.lpad(millis, 2, "0")
+		
+
+				$("#reaction .player .time").html(sec+":"+millis);
 				var duration = document.getElementById("audioMatch").duration * 1000;
 				$("#reaction .player .progress-bar").css({width : currentTime / duration * 100.0+"%"});
 			}, 20);
@@ -276,7 +285,7 @@ Template.reaction.events = {
 		})	
 		.end()
 		.find(".message")
-		.html("Si vous écoutez cet enregistrement le love bot enverra une notification à "+Session.get(Meteor.MATCH).firstname+". Souhaitez-vous poursuivre?");
+		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
 		var data = {
@@ -302,6 +311,9 @@ Template.reaction.events = {
 		$("audio.loop").trigger("pause");
 		$("#happy").prop("currentTime",0).trigger("play");
 		$("#yeah").prop("currentTime",0).trigger("play");
+
+		
+
 
 		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");
