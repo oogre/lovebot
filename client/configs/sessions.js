@@ -11,7 +11,7 @@ Session.setDefault(Meteor.ACTIVETIMEOUT, 15000);
 
 
 Meteor.TIMEOUT			= "timeout";
-Session.setDefault(Meteor.TIMEOUT, 5000);
+Session.setDefault(Meteor.TIMEOUT, 8000);
 
 Meteor.TIMER			= "timer";
 Session.setDefault(Meteor.TIMER, Session.get(Meteor.TIMEOUT));
