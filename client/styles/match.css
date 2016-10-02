@@ -7,6 +7,40 @@
 #match .btn.btn-link{
     color:#fff;
 }
+#match .arrow-left{
+    background-image: url(arrowLeft.png);
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#match .arrow-right{
+    background-image: url(arrowRight.png);
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#match .like{
+    background-image: url(like.png);
+    /* background-color: transparent; */
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#match .dislike{
+    background-image: url(dislike.png);
+    /* background-color: transparent; */
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .matched-user-picture-wrapper{
 	position: absolute;
     top: 0;
@@ -40,14 +74,11 @@
     line-height: 1.3;
 }
 #match .btn.btn-success{
-    padding-right: 10px;
-    padding-top: 8px;
     background-color:  #ff5252;
 }
 
 #match .btn.btn-danger{
     background-color:  #0051f3;
-    padding-top: 4px;
 }
 #match .btn.change{
     text-shadow: 0 0 30px #111;

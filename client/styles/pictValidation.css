@@ -2,3 +2,9 @@
 .btn.btn-default:hover{
 	color: #fff;
 }
+#pictValidation .btn.btn-success {
+    background-color: #00ebaa;
+}
+#pictValidation .btn.btn-default, .btn.btn-default:hover {
+    background-color: #aeaeae;
+}

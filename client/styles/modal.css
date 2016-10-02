@@ -1,3 +1,11 @@
+.modal .modal-dialog{
+    width: 949px;
+    margin: 200px auto;
+}
+.modal-backdrop{
+    background-color: transparent;
+}
+
 .modal.blue .modal-content{
     background-color: #0051f3;
     border-color: #0051f3;

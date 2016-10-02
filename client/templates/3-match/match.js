@@ -18,37 +18,35 @@ Template.match.rendered = function(){
 Template.match.events = {
 	'click button.no': function (e) {
 		var data = {
-			emitter : this.user._id,
-			receiver : this.user2._id,
+			emitter : Session.get(Meteor.USER)._id,
+			receiver : Session.get(Meteor.USER_2)._id,
 			like : false
 		}
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			atTheFirstMatchProp : "dislike",
+		});
 		Session.set(Meteor.LIKE, 0);
 		Meteor.call("upsertRelation", data);
 		Template.match.next();
 	},
 	'click button.yes': function (e) {
 		var data = {
-			emitter : this.user._id,
-			receiver : this.user2._id,
+			emitter : Session.get(Meteor.USER)._id,
+			receiver : Session.get(Meteor.USER_2)._id,
 			like : true
 		}
+
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			atTheFirstMatchProp : "like",
+		});
 		Session.set(Meteor.LIKE, 1);
 		Meteor.call("upsertRelation", data);
 		Template.match.next();
 	},
 	'click button.change': function(e){
-		
 		$("#match #audio3").prop("currentTime",0).trigger("play");
-		/*
-		$("#alertModal")
-		.modal({
-			backdrop: 'static',
-  			keyboard: false
-		})
-		.modal("show")
-		.find(".message")
-		.html("Le Love Bot n’est pas un supermarché.")
-		.end();
-		*/
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			atTheFirstMatchPropOther : 1,
+		});
 	}
 };

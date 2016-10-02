@@ -1,4 +1,7 @@
 var openModal = function(e){
+	Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+		recordAgreed : 0,
+	});
 	Template.confirmModal.openAlertModal(null, "Votre spontanéité est votre plus belle qualité!", "blue");
 };
 
@@ -31,6 +34,16 @@ var superFnc = function(){
 	});
 	tchataudio.prop("currentTime",0).trigger("play");
 	
+	var disapear = function(){
+		var t = $("ul>li:visible");
+		t = t[t.length-2];
+		if(t){
+			$(t).css({
+				"opacity" :  0.7
+			})
+		}
+	}
+	
 	var time=0;
 	children.each(function(index, elem){
 		var currentChild = $(elem);
@@ -39,6 +52,7 @@ var superFnc = function(){
 		if(t>0){
 			time+=t;
 			setTimeout(function(){
+				disapear();
 				if(nextChild.length > 0){
 					nextChild.slideDown(function(){
 						action(nextChild.attr("data-action"));
@@ -49,6 +63,7 @@ var superFnc = function(){
 				}
 			}, time);
 		}else{
+			disapear();
 			action(nextChild.attr("data-action"));
 		}
 	});
@@ -98,7 +113,7 @@ var action = function(method){
 		break;
 		case "reload" : 
 			$("#happy").get(0).addEventListener('ended', function(){
-				Meteor.reload();
+				//Meteor.reload();
 			});
 		break;
 		case "pauseTheLoop" : 
@@ -135,7 +150,9 @@ var recordAudio = function(callback){
 					receiver : Session.get(Meteor.USER_2)._id,
 					audio : fileObj._id
 				}
-				$(".glyphicon.record.danger").removeClass("glow");
+				console.log(data);
+
+				$(".glyphicon.record.danger").removeClass("glow").addClass("recorded").parent().addClass("circle");
 				setTimeout(function(){
 					Meteor.call("updateRelationWithAudio", data, function(err, data){
 						if(err)return console.log(err);
@@ -160,6 +177,9 @@ var recordAudio = function(callback){
 				})
 				.find(".no").one("click", openModal).end()
 				.find(".yes").one("click", function(e){
+					Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+						recordAgreed : 1,
+					});
 					$("#confirmModal").find(".no").off("click", openModal);
 					$("audio.loop").trigger("play");
 					callback();
@@ -252,6 +272,11 @@ Template.reaction.events = {
 		.find(".no").one("click", function(e){
 			$("#confirmModal").modal("hide");
 			$("audio.loop").trigger("play");
+
+
+			Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+				listenToTheMatch : 0,
+			});
 			playFlag = true;
 		}).end()
 		.find(".btn.yes")
@@ -263,6 +288,9 @@ Template.reaction.events = {
 		.find(".yes").one("click", function(e){
 			$(".glyphicon.glyphicon-play").addClass("glow");
 			$("#audioMatch").trigger('play');
+			Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+				listenToTheMatch : 1,
+			});
 			var t0 = new Date().getTime();
 			var time = setInterval(function(){
 				var currentTime = new Date().getTime() - t0;
@@ -276,6 +304,7 @@ Template.reaction.events = {
 				var duration = document.getElementById("audioMatch").duration * 1000;
 				$("#reaction .player .progress-bar").css({width : currentTime / duration * 100.0+"%"});
 			}, 20);
+
 			$("#audioMatch").get(0).addEventListener('ended', function(){
 				clearInterval(time);
 				$("audio.loop").trigger("play");
@@ -288,32 +317,46 @@ Template.reaction.events = {
 		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
+		$(".btn.yes").addClass("clicked");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
 			like : true
 		}
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			atTheSecondMatchProp : "like",
+		});
+
 		Meteor.call("upsertRelation", data);
 		Meteor.resetTimeoutFnc();
 		confirmFlag = true;
 	},
 	'click .btn.no': function (e) {
+		$(".btn.no").removeClass("clicked");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
 			like : false
 		}
+
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			atTheSecondMatchProp : "dislike",
+		});
 		Meteor.call("upsertRelation", data);
 		Meteor.resetTimeoutFnc();
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
+		$(".btn.yesyes").addClass("clicked");
 		$("audio.loop").trigger("pause");
 		$("#happy").prop("currentTime",0).trigger("play");
 		$("#yeah").prop("currentTime",0).trigger("play");
 
 		
 
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			sendEmail : 1,
+		});
 
 		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");
@@ -324,7 +367,13 @@ Template.reaction.events = {
 		});
 	},
 	'click .btn.nono': function (e) {
+		$(".btn.nono").addClass("clicked");
 		$("#timeout").prop("currentTime",0).trigger("play");
+
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			sendEmail : 0,
+		});
+
 		setTimeout(function(){
 			Meteor.resetTimeoutFnc();
 			Router.go("sadBye");

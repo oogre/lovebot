@@ -7,12 +7,35 @@
 	min-width: 100px;
 	margin-left: 0;
 	margin-right: 0;
+    padding: 40px 65px;
+    border-radius: 60px;
 }
 #reaction ul{
 	margin-bottom: 0;
     padding-left: 0;
     margin-right: 0;
     padding-right: 0;
+}
+
+#reaction [data-action='record'] .btn-default{
+    background-color: #ededed;
+    color: #0051f3;
+}
+#reaction .clicked{
+    background-color: #4d4d4d;
+    color: #808080;
+}
+#reaction .waitForIt{
+    font-size: 11em;
+    position: relative;
+    height: 120px;
+    width: 270px;
+    background-color: #aeaeae;
+}
+#reaction .waitForIt span{
+    position: absolute;
+    top: 0;
+    line-height: 30px;
 }
 #reaction .row ul.lovebot>li, 
 #reaction .row{
@@ -46,7 +69,7 @@
     max-height: 100px;
 }
 #reaction .banner .status{
-    color: green;
+    color: #87c13f;
 }
 #reaction .banner .status h3{
     color: black;
@@ -60,23 +83,48 @@
     border:none;
 }
 
+#reaction [data-action="play"] .progress{
+    width: 270px;
+    
+    border-right: solid 2px #fff;
+    border-left: solid 2px #fff;
+    background-image: url(progressBg2.png);
+}
 #reaction .progress{
     padding: 0;
     margin-bottom: 7px;
     height: 10px;
     width: 300px;
     left: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border-right: solid 2px #0051f3;
+    border-left: solid 2px #0051f3;
+    border-radius: 0;
+    background-image: url(progressBg.png);
+    background-repeat-y: no-repeat;
+    background-position-y: 50%;
+    background-size: 1px 2px;
+
+}
+#reaction .circle{
+    border: solid 1px #0051f3;
+    padding: 10px;
+    border-radius: 60px;
+    height: 52px;
+    width: 52px;
 }
 #reaction .recorder .progress-bar-danger{
-    background: red;
+    background: #0051f3;
 }
 #reaction [data-action='play'] .progress-bar-danger{
-    background: blue;
+    background: #fff;
 }
 
 #reaction [data-action='play'] .btn.btn-lovebot{
     background-color:#F0F;
 }
+
 
 .progress-bar{
 	-webkit-transition: none;
@@ -85,15 +133,18 @@
 }
 
 #reaction .glyphicon.record{
-	width: 30px;
+    width: 30px;
     height: 30px;
-    background: red;
+    background: #e81c24;
     border-radius: 15px;
+}
+#reaction .glyphicon.record.recorded{
+    background: #87c13f;
 }
 #reaction .time{
 	min-width: 30px;
     vertical-align: 6px;
     font-family: "CourierNewBold";
-    font-size: 16px;
+    font-size: 25px;
 }
 }

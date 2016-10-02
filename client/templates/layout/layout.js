@@ -8,5 +8,6 @@
 
 
 Template.layout.rendered = function(){
+	
 	$(document).off('keyup', Meteor.resetTimeoutFnc);
 };
