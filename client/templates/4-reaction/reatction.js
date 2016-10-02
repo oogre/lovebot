@@ -314,7 +314,7 @@ Template.reaction.events = {
 		})	
 		.end()
 		.find(".message")
-		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". Souhaitez-vous poursuivre?");
+		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". <br/><br/>Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
 		$(".btn.yes").addClass("clicked");

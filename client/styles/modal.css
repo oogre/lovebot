@@ -37,6 +37,7 @@
     text-align: center;
 }
 .modal .modal-header{
+    text-transform: lowercase;
 	color: #fff;
     font-family: monospace;
     padding: 5px 5px 0px 20px;
