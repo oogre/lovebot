@@ -1,12 +1,13 @@
 
 body{
-    background-image: url(vaporwave_bg_1 copy.gif), url(vhs_invert.gif);
+    background-image: url(bgok.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: multiply;
 }
 .container.main{
-  background: transparent;
+  background: #fff;
+  opacity: 0.8;
 }
 
 .container.main.fixe{
