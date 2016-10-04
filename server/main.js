@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
-var Dropbox, client;
+
 Meteor.startup(function () {
+
 
 
 	if(Users.find().count() == 0){

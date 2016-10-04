@@ -249,10 +249,10 @@ Template.reaction.helpers({
 		return $(document).height();
 	},
 	yes : function(){
-		return Session.get(Meteor.LIKE) ? "yes" : "no";
+		return Session.get(Meteor.LIKE) ? "yes" : "yes";
 	},
 	no : function(){
-		return Session.get(Meteor.LIKE) ? "no" : "yes";
+		return Session.get(Meteor.LIKE) ? "no" : "no";
 	}
 });
 
@@ -314,7 +314,7 @@ Template.reaction.events = {
 		})	
 		.end()
 		.find(".message")
-		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". <br/><br/>Souhaitez-vous poursuivre?");
+		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra votre photo à "+Session.get(Meteor.USER_2).firstname+". <br/><br/>Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
 		$(".btn.no").addClass("clicked");

@@ -72,6 +72,15 @@ function checkInput(target){
 			return true;
 		}	
 	}
+	else if (target.attr("name") == "gender" || target.attr("name") == "sex" ){
+		if(! Match.test(target.val(), Meteor.NonEmptyString)){
+			target.parent().parent().addClass("error").removeClass("success");
+			return false;
+		}else{
+			target.parent().parent().removeClass("error").addClass("success");
+			return true;
+		}
+	}
 	else{
 		if(! Match.test(target.val(), Meteor.NonEmptyString)){
 			target.parent().addClass("error").removeClass("success");
@@ -90,7 +99,9 @@ Template.signUp.events = {
 	},
 	"change select" : function (e) {
 		$("#audioClick3").prop("currentTime",0).trigger("play");
-		$(e.target).css({
+		var target = $(e.target);
+		checkInput(target);
+		target.css({
 			"color": "rgba(255, 255, 255, 1)"	
 		});
 		Template.signUp.glitch();
@@ -101,6 +112,10 @@ Template.signUp.events = {
 
 		var target = $(e.target);
 		checkInput(target);
+
+		$("select, input:not([type=submit])").each(function(n, elem){
+			checkInput($(elem));
+		});
 
 		
 		Template.signUp.glitch();
@@ -208,16 +223,20 @@ Template.signUp.rendered = function(){
 			at2: 'center bottom'
 		},
 		change: function(e, keyboard, el, txt) {
+			
 			var current = $(audios.get(e.action.charCodeAt(0)%audios.length));
 			current.prop("currentTime",0).trigger("play");
 			Meteor.resetTimeoutFnc();
+			if(e.action=="enter"){
+				keyboard.accept();
+			}
 			return txt;
 		},
 		visible : function(){
 			Meteor.resetTimeoutFnc();
 		}
 	}).getkeyboard();
-Meteor.keyboard = $("input[type=number]").keyboard({
+	Meteor.keyboard = $("input[type=number]").keyboard({
 		display: {
 			'bksp'   : '\u2190',
 			'enter'  : 'return',

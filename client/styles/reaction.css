@@ -20,6 +20,7 @@
 #reaction [data-action='record'] .btn-default{
     background-color: #ededed;
     color: #0051f3;
+    width: 100%;    
 }
 #reaction .clicked{
     background-color: #4d4d4d;
@@ -34,9 +35,34 @@
 }
 #reaction .waitForIt>span{
     position: absolute;
-    top: 0;
+    top: -10px;
     line-height: 30px;
 }
+@-webkit-keyframes jump {
+    0%   {top : 0;}
+    50%  {top : 20px;}
+    100% {top : 0;}
+}
+#reaction .waitForIt>span>span{    
+    position: relative;
+    -webkit-animation-name: jump;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+}
+
+#reaction .waitForIt>span>span:nth-child(1){    
+    -webkit-animation-delay : 0s;
+}
+
+#reaction .waitForIt>span>span:nth-child(2){    
+    -webkit-animation-delay : 0.33s;
+}
+
+#reaction .waitForIt>span>span:nth-child(3){    
+    -webkit-animation-delay : 0.66s;
+}
+
 #reaction .row ul.lovebot>li, 
 #reaction .row{
 	display: none;
@@ -46,9 +72,7 @@
 }
 
 #reaction .tchat .glyphicon-play{
-    background-color: rgba(255,255,255,0.5);
-    border-radius: 100%;
-    padding: 5px 2px 5px 8px;
+    padding: 9px 2px 5px 12px;
 }
 #reaction .banner{
     z-index: 10;
@@ -84,7 +108,7 @@
 }
 
 #reaction [data-action="play"] .progress{
-    width: 270px;
+    width: 420px;
     
     border-right: solid 2px #fff;
     border-left: solid 2px #fff;
@@ -94,7 +118,7 @@
     padding: 0;
     margin-bottom: 7px;
     height: 10px;
-    width: 300px;
+    width: 420px;
     left: 0;
     box-shadow: none;
     background-color: transparent;
@@ -110,6 +134,15 @@
 #reaction .circle.circled{
     border: solid 1px #0051f3;
 }
+#reaction .player li:first-child{
+    width: 49px;
+    height: 49px;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 49px;
+}
+
 #reaction .circle{
     border: solid 1px transparent;
     padding: 10px;
@@ -126,6 +159,8 @@
 
 #reaction [data-action='play'] .btn.btn-lovebot{
     background-color:#F0F;
+        width: 100%;
+        padding-right: 0;
 }
 
 
@@ -147,7 +182,8 @@
 #reaction .time{
 	min-width: 30px;
     vertical-align: 6px;
-    font-family: "CourierNewBold";/*font-family: "CircularStd";*/
+    /*font-family: "CourierNewBold";*/
+    font-family: "CircularStd";/**/
     font-size: 25px;
 }
 }

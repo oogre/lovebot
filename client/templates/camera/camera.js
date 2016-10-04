@@ -57,7 +57,10 @@ function setupMedia() {
 			audioInput.connect(audioGain);
 			audioGain.connect(audioContext.destination);
 			
-			audioRecorder = new Recorder(audioInput);
+			audioRecorder = new Recorder(audioInput, {
+				bufferLen : 512,
+				type : "audio/mp3"
+			});
             mediaStream = localMediaStream;
 			
 		}, function (e) {
@@ -87,7 +90,7 @@ window.recordAudio = function(callback, update){
 		audioRecorder.stop();
 		audioRecorder.exportWAV(function (audioBlob) {
 			audioBlob.lastModifiedDate = new Date();
-			audioBlob.name = (new Date().getTime())+".wav";
+			audioBlob.name = (new Date().getTime())+".mp3";
 			return callback(null, audioBlob);
 		});
 		clearInterval(time);

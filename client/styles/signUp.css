@@ -55,7 +55,7 @@
     background-image: linear-gradient(to left bottom, #F7D5B3 13%, #FDA9C9 100%);
 }
 
-#signUp .error .form-control{
+#signUp .error .form-control, #signUp .error .box{
     border-bottom-color: #ff008d;
 }
 #signUp .form-control{
