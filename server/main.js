@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
-
+var Dropbox, client;
 Meteor.startup(function () {
+
+
 	if(Users.find().count() == 0){
 		Images.addFile(process.env.PWD+"/public/lovebot.jpg", {
 			fileName: 'thelovebot.jpg',

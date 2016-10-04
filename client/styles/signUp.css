@@ -16,6 +16,9 @@
     filter: blur(3px);*/
     background-position: center center;
 }
+#signUp form>fieldset.row{
+    margin-top: 20px;
+}
 #signUp input[type=radio]{
     margin-top: 15px;
 }
@@ -25,7 +28,7 @@
 }
 
 #signUp .btn{
-    margin: 0 50px 0 0;
+    margin: 0 0 0 0;
 }
 #signUp .gender label{
     font-family: 'CircularStd';
@@ -119,10 +122,12 @@
 
 #signUp .btn-fushia[disabled]{
     background-color: #c7c7c7;
-
+    color: #e1e1e1;
 }
 
 #signUp .btn-fushia{
     background-color: #ff008d;
     color: #fff;
+    font-size: 2.2em;
+    padding: 15px 30px;
 }

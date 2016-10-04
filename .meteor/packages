@@ -31,3 +31,4 @@ cmather:handlebars-server
 thinksoftware:image-resize-client
 shell-server
 underscorestring:underscore.string
+http

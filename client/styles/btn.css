@@ -70,12 +70,15 @@
     text-transform: uppercase;
     border-radius: 0;
     padding: 25px;
-    font-size: 1.3em;
-}.btn.btn-pink{
+    width: 490px;
+    height: 80px;
+    font-size: 1.8em;
+}
+.btn.btn-pink{
   color:#fff;
     border: none;
     background-color: #ff008d;
-    box-shadow: -5px 5px 0 #ffea24;
+    box-shadow: -5px 5px 0 #fee840;
 }
 .btn.btn-success{
     background-color: #87c13f;

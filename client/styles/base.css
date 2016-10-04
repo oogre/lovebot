@@ -1,17 +1,12 @@
 
 body{
-    background-image: url(bgslow.gif), url(bgveryslow.gif);
+    background-image: url(vaporwave_bg_1 copy.gif), url(vhs_invert.gif);
     background-repeat: no-repeat;
     background-size: cover;
-    background-blend-mode: hard-light;
-    background-position: bottom left;
+    background-blend-mode: multiply;
 }
 .container.main{
-  background: #fff;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity : 0.9;
+  background: transparent;
 }
 
 .container.main.fixe{

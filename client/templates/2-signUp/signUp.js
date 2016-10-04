@@ -13,12 +13,12 @@ Template.signUp.glitch = function(){
 }
 Template.signUp.next = function(data){
 	$("#audioClick1").prop("currentTime",0).trigger("play");
-	
-	Meteor.call("findOrCreateUser", data, function(error, _id){
+	Meteor.call("updateUser", Session.get(Meteor.USER)._id, data, function(error, data){
 		if(error){
-			return console.log(error);
+			console.log(error);
+			Meteor.reload();
+			return;
 		}
-		Session.set(Meteor.USER, {_id : _id});
 		setTimeout(function(){
 			Router.go("match");
 		}, 1000)
@@ -120,12 +120,12 @@ Template.signUp.events = {
 		var data = {
 			firstname : e.target.firstname.value,
 			email : e.target.email.value,
-			picture : Session.get(Meteor.PICTUREID),
 			gender : e.target.gender.value,
 			sex : e.target.sex.value,
 			age : e.target.age.value
 		};
 		
+
 		if( Match.test(data.firstname, Meteor.NonEmptyString) &&
 			Match.test(data.email, Meteor.ValidEmail)
 		) {

@@ -1,3 +1,4 @@
+
 Template.pictValidation.glitch = function(callback){
 	var elem= $("#pictValidation img");
 	elem
@@ -39,6 +40,9 @@ function getRandomPrevSentence(){
 
 Template.pictValidation.events = {
 	'click button.prev': function (e) {
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			pictureAgreed : 0,
+		});
 		$("#alertModal")
 		.modal({
 			backdrop: 'static',
@@ -52,6 +56,9 @@ Template.pictValidation.events = {
 		.html(getRandomPrevSentence());
 	},
 	'click button.next': function (e) {
+		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
+			pictureAgreed : 1,
+		});
 		Template.pictValidation.next("audioClick1");
 	}
 };
@@ -60,6 +67,7 @@ Template.pictValidation.events = {
 Template.pictValidation.rendered = function(){
 	$(".container.main")
 	.css({
-		"opacity": 1 
+		"opacity": 1,
+		"background": "#ededed" 
 	});
 }

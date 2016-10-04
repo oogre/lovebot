@@ -1,0 +1,4 @@
+
+Template.body.rendered = function(){
+	
+};

@@ -10,7 +10,7 @@ Template.start.events = {
 				chunkSize: 'dynamic'
 			}, false);
 
-
+		
 			upload.on('start', function () {
 				currentUpload.set(0);
 			});
@@ -21,10 +21,18 @@ Template.start.events = {
 			upload.on('end', function (error, fileObj) {
 				if (error) {
 					console.log(error);
+					Meteor.reload();
 				} else {
 					setTimeout(function(){
 						Session.set(Meteor.PICTURE, Images.link(Images.collection.findOne(fileObj._id)));
 						Session.set(Meteor.PICTUREID, fileObj._id);
+						
+						Meteor.call("createUser", {
+							picture : fileObj._id
+						},function(err, data){
+							Session.set(Meteor.USER, {_id : data});
+						});
+
 						Router.go("pictValidation");
 					}, 20);
 				}
@@ -37,6 +45,7 @@ Template.start.events = {
 Template.start.onCreated(function () {
   currentUpload = new ReactiveVar(false);
 });
+
 
 Template.start.helpers({
 	currentUpload: function () {
