@@ -152,7 +152,7 @@ var recordAudio = function(callback){
 				}
 				console.log(data);
 
-				$(".glyphicon.record.danger").removeClass("glow").addClass("recorded").parent().addClass("circle");
+				$(".glyphicon.record.danger").removeClass("glow").addClass("recorded").parent().addClass("circled");
 				setTimeout(function(){
 					Meteor.call("updateRelationWithAudio", data, function(err, data){
 						if(err)return console.log(err);
@@ -317,7 +317,7 @@ Template.reaction.events = {
 		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra une notification à "+Session.get(Meteor.USER_2).firstname+". <br/><br/>Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
-		$(".btn.yes").addClass("clicked");
+		$(".btn.no").addClass("clicked");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
@@ -332,7 +332,7 @@ Template.reaction.events = {
 		confirmFlag = true;
 	},
 	'click .btn.no': function (e) {
-		$(".btn.no").removeClass("clicked");
+		$(".btn.yes").removeClass("clicked");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
@@ -347,7 +347,7 @@ Template.reaction.events = {
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
-		$(".btn.yesyes").addClass("clicked");
+		$(".btn.nono").addClass("clicked");
 		$("audio.loop").trigger("pause");
 		$("#happy").prop("currentTime",0).trigger("play");
 		$("#yeah").prop("currentTime",0).trigger("play");
@@ -367,7 +367,7 @@ Template.reaction.events = {
 		});
 	},
 	'click .btn.nono': function (e) {
-		$(".btn.nono").addClass("clicked");
+		$(".btn.yesyes").addClass("clicked");
 		$("#timeout").prop("currentTime",0).trigger("play");
 
 		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {

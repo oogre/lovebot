@@ -7,4 +7,10 @@
 }
 #pictValidation .btn.btn-default, .btn.btn-default:hover {
     background-color: #aeaeae;
+    background-color: #ff008d;
+}
+
+#pictValidation .btn.btn-default, #pictValidation .btn.btn-success{
+	min-width: 290px;
+	margin: 50px 10px;
 }

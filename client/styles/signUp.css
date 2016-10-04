@@ -16,6 +16,9 @@
     filter: blur(3px);*/
     background-position: center center;
 }
+#signUp form>fieldset.row{
+    margin-top: 20px;
+}
 #signUp input[type=radio]{
     margin-top: 15px;
 }
