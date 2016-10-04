@@ -14,6 +14,10 @@
 .ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo) {
 	min-width: 3em;
 }
+#age_keyboard .ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo){
+	min-width: 2em;
+}
+
 .ui-keyboard-actionkey:not(.ui-keyboard-dec):not(.ui-keyboard-combo)[data-value=enter]{
 	min-width: 5.2em;	
 }

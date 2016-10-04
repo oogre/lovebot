@@ -45,6 +45,18 @@ Template.match.events = {
 	},
 	'click button.change': function(e){
 		$("#match #audio3").prop("currentTime",0).trigger("play");
+		$("#alertModal")
+		.find(".modal-body img")
+		.attr("src", "timeout.png")
+		.end()
+		.modal({
+			backdrop: 'static',
+  			keyboard: false
+		})
+		.modal("show")
+		.find(".message")
+		.html("Le LOVEBOT n'est pas un supermarché");
+
 		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
 			atTheFirstMatchPropOther : 1,
 		});

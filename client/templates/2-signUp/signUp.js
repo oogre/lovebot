@@ -60,6 +60,18 @@ function checkInput(target){
 			return false;
 		}
 	}
+	else if (target.attr("name") == "age"){
+		var age = parseInt(target.val())|| 0;
+		var ageMin = parseInt(target.attr("min"))||18;
+
+		if(age<ageMin){
+			target.parent().addClass("error").removeClass("success");
+			return false;
+		}else{
+			target.parent().removeClass("error").addClass("success");
+			return true;
+		}	
+	}
 	else{
 		if(! Match.test(target.val(), Meteor.NonEmptyString)){
 			target.parent().addClass("error").removeClass("success");
@@ -144,7 +156,10 @@ Template.signUp.rendered = function(){
 		"opacity": 1 
 	});
 	var audios = $("#signUp #keyboardSounds audio");
-	Meteor.keyboard = $("input:not([type=submit]):not([type=checkbox]):not([type=radio])").keyboard({
+
+
+
+	Meteor.keyboard = $("input:not([type=submit]):not([type=number]):not([type=checkbox]):not([type=radio])").keyboard({
 		display: {
 			'bksp'   : '\u2190',
 			'enter'  : 'return',
@@ -153,7 +168,6 @@ Template.signUp.rendered = function(){
 			'meta2'  : '#+=',
 			'accept' : '\u21d3'
 		},
-
 		layout: 'custom',
 		customLayout: {
 			'normal': [
@@ -179,6 +193,47 @@ Template.signUp.rendered = function(){
 				'\\ | / < > \u20ac \u00a3 \u00a5 \u2022 {enter}',
 				'{meta1} $ & ~ # = + . {meta1}',
 				'{normal} {space} ! ?'
+			]
+		},
+		usePreview : false,
+		autoAccept : true,
+		position : {
+			// optional - null (attach to input/textarea) or a jQuery object
+			// (attach elsewhere)
+			of : null,
+			my : 'center bottom',
+			at : 'center bottom',
+			// used when "usePreview" is false
+			// (centers keyboard at bottom of the input/textarea)
+			at2: 'center bottom'
+		},
+		change: function(e, keyboard, el, txt) {
+			var current = $(audios.get(e.action.charCodeAt(0)%audios.length));
+			current.prop("currentTime",0).trigger("play");
+			Meteor.resetTimeoutFnc();
+			return txt;
+		},
+		visible : function(){
+			Meteor.resetTimeoutFnc();
+		}
+	}).getkeyboard();
+Meteor.keyboard = $("input[type=number]").keyboard({
+		display: {
+			'bksp'   : '\u2190',
+			'enter'  : 'return',
+			'normal' : 'ABC',
+			'empty' : ' ',
+			'meta1'  : '.?123',
+			'meta2'  : '#+=',
+			'accept' : '\u21d3'
+		},
+		layout: 'custom',
+		customLayout: {
+			'normal': [
+				'1 2 3',
+				'4 5 6',
+				'7 8 9',
+				'{empty} 0 {bksp}'
 			]
 		},
 		usePreview : false,
