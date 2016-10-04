@@ -113,7 +113,7 @@ var action = function(method){
 		break;
 		case "reload" : 
 			$("#happy").get(0).addEventListener('ended', function(){
-				//Meteor.reload();
+				Meteor.reload();
 			});
 		break;
 		case "pauseTheLoop" : 
