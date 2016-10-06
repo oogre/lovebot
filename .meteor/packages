@@ -32,3 +32,5 @@ thinksoftware:image-resize-client
 shell-server
 underscorestring:underscore.string
 http
+percolate:synced-cron
+momentjs:moment

@@ -19,6 +19,9 @@ Template.signUp.next = function(data){
 			Meteor.reload();
 			return;
 		}
+		Meteor.call("sendWelcomEmail", {
+			receiver : data
+		});
 		setTimeout(function(){
 			Router.go("match");
 		}, 1000)

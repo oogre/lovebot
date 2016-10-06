@@ -290,6 +290,17 @@ Template.reaction.events = {
 			$("#audioMatch").trigger('play');
 			Meteor.call("updateUser", Session.get(Meteor.USER)._id, {
 				listenToTheMatch : 1,
+			}, function(error, data){
+				if(error){
+					console.log(error);
+					Meteor.reload();
+					return;
+				}
+				Meteor.call("sendNotificationEmail", {
+					user1 : Session.get(Meteor.USER)._id,
+					user2 : Session.get(Meteor.USER_2)._id,
+					user3 : Session.get(Meteor.USER_3)._id
+				});
 			});
 			var t0 = new Date().getTime();
 			var time = setInterval(function(){
@@ -361,7 +372,7 @@ Template.reaction.events = {
 		Meteor.resetTimeoutFnc();
 		$(".btn.yesyes").removeClass("yesyes");
 		sendItFlag = true;
-		Meteor.call("sendEmail", {
+		Meteor.call("sendMatchEmail", {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
 		});
