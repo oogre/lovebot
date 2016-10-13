@@ -328,7 +328,8 @@ Template.reaction.events = {
 		.html("Si vous écoutez cet enregistrement le LOVEBOT enverra votre photo à "+Session.get(Meteor.USER_2).firstname+". <br/><br/>Souhaitez-vous poursuivre?");
 	},
 	'click .btn.yes': function (e) {
-		$(".btn.no").addClass("clicked");
+		$(".btn.no").removeClass("no").addClass("clicked");
+		$(".btn.yes").removeClass("yes");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
@@ -343,7 +344,8 @@ Template.reaction.events = {
 		confirmFlag = true;
 	},
 	'click .btn.no': function (e) {
-		$(".btn.yes").removeClass("clicked");
+		$(".btn.yes").removeClass("yes").addClass("clicked");
+		$(".btn.no").removeClass("no");
 		var data = {
 			emitter : Session.get(Meteor.USER)._id,
 			receiver : Session.get(Meteor.USER_2)._id,
@@ -358,7 +360,7 @@ Template.reaction.events = {
 		Router.go("sadBye");
 	},
 	'click .btn.yesyes': function (e) {
-		$(".btn.nono").addClass("clicked");
+		$(".btn.nono").removeClass("nono").addClass("clicked");
 		$("audio.loop").trigger("pause");
 		$("#happy").prop("currentTime",0).trigger("play");
 		$("#yeah").prop("currentTime",0).trigger("play");
@@ -378,7 +380,7 @@ Template.reaction.events = {
 		});
 	},
 	'click .btn.nono': function (e) {
-		$(".btn.yesyes").addClass("clicked");
+		$(".btn.yesyes").removeClass("yesyes").addClass("clicked");
 		$("#timeout").prop("currentTime",0).trigger("play");
 
 		Meteor.call("updateUser", Session.get(Meteor.USER)._id, {

@@ -4,3 +4,10 @@ Template.sadBye.rendered = function(){
 		Meteor.reload();
 	});
 };
+
+Template.sadBye.events({
+	"click button" : function(){
+		Meteor.reload("snapPicture");
+		return false;
+	}
+});

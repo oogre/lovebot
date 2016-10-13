@@ -280,4 +280,7 @@ Template.signUp.rendered = function(){
 			Meteor.resetTimeoutFnc();
 		}
 	}).getkeyboard();
+	
+	$('[data-toggle="tooltip"]').tooltip();
+	
 };

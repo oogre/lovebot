@@ -1,0 +1,12 @@
+#sadBye .matched-user-picture{
+	background-image: url(LB_avatar_sad.gif);
+    background-size: 450px;
+    background-repeat: no-repeat;
+    background-position: center 60px;
+}
+
+#sadBye .sentence{
+	font-family:'VCR OSD MONO';
+	font-size: 2em;
+	
+}

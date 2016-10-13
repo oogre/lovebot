@@ -2,12 +2,15 @@
 Meteor.PICTURE			= "picture";
 Session.setDefault(Meteor.PICTURE, false);
 
+Meteor.CAM_READY			= "camReady";
+Session.setDefault(Meteor.CAM_READY, false);
+
 Meteor.PICTUREID			= "pictureId";
 Session.setDefault(Meteor.PICTUREID, false);
 
 
 Meteor.ACTIVETIMEOUT			= "activeTimeout";
-Session.setDefault(Meteor.ACTIVETIMEOUT, 150000);
+Session.setDefault(Meteor.ACTIVETIMEOUT, 1500000);
 
 
 Meteor.TIMEOUT			= "timeout";
@@ -32,6 +35,6 @@ Meteor.LIKE			= "like";
 Session.setDefault(Meteor.LIKE, -1);
 
 Meteor.RECORDTIME			= "recordTime";
-Session.setDefault(Meteor.RECORDTIME, 5000);
+Session.setDefault(Meteor.RECORDTIME, 10000);
 
 

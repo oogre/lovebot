@@ -1,10 +1,34 @@
 var videoCanvas, videoContext;
-var audioRecorder, audioContext;
-
+window.audioRecorder, audioContext;
+Meteor.cameraReady = false;
 function supportsMedia() {
 	return !!(	navigator.getUserMedia || navigator.webkitGetUserMedia ||
 				navigator.mozGetUserMedia || navigator.msGetUserMedia);
 }
+
+
+/*
+
+this.mediaDevices = (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ? 
+			navigator.mediaDevices : ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+				getUserMedia: function(c) {
+					return new Promise(function(y, n) {
+						(navigator.mozGetUserMedia ||
+						navigator.webkitGetUserMedia).call(navigator, c, y, n);
+					});
+				}
+		} : null);
+MediaDevices {}
+this.mediaDevices.getUserMedia({
+				"audio": false,
+				"video": true
+			})
+			.then( function(stream) {
+				console.log(stream)
+				
+			})
+
+*/
 
 // cross-browser support for getUserMedia
 navigator.getUserMedia = 	navigator.getUserMedia ||
@@ -26,10 +50,10 @@ window.requestAnimationFrame = (function () {
 var mediaStream;
 // global variables for recording audio
 var audioContext;
-var audioRecorder;
+
 
 // function for requesting the media stream
-function setupMedia() {
+function setupMedia(callback) {
 	if (supportsMedia()) {
 		audioContext = new AudioContext();
  
@@ -37,6 +61,7 @@ function setupMedia() {
 			video: true,
 			audio: true
 		}, function (localMediaStream) {
+			callback();
 			// map the camera
 			document.getElementById('live_video').hidden = true;
 			document.getElementById('media-error').hidden = true;
@@ -57,12 +82,13 @@ function setupMedia() {
 			audioInput.connect(audioGain);
 			audioGain.connect(audioContext.destination);
 			
-			audioRecorder = new Recorder(audioInput, {
-				bufferLen : 512,
+			audioRecorder = new Recorder(audioInput, {	
 				type : "audio/mp3"
 			});
             mediaStream = localMediaStream;
-			
+            
+
+
 		}, function (e) {
 			console.log('web-cam not initialized: ', e);
 			document.getElementById('media-error').hidden = false;
@@ -74,7 +100,12 @@ function setupMedia() {
 
 Template.camera.helpers({
 	supportsMedia : supportsMedia,
-	onLoad : setupMedia,
+	onLoad : function(){
+		var self = this;
+		setupMedia(function(){
+		});
+		
+	},
 });
 
 window.recordAudio = function(callback, update){

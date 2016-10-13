@@ -41,6 +41,23 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+#match .matched-user-picture-wrapper .banner{
+    background-image: -webkit-gradient( linear, left bottom, right top, color-stop(0.13, #F7D5B3), color-stop(1, #FDA9C9) );
+    background-image: -o-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -moz-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -webkit-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: -ms-linear-gradient(left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    background-image: linear-gradient(to left bottom, #F7D5B3 13%, #FDA9C9 100%);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-shadow: none;
+    font-family:'CircularStd';
+    text-transform: initial;
+    font-size: 0.8em;
+    padding: 50px;
+}
 .matched-user-picture-wrapper{
 	position: absolute;
     top: 0;
@@ -53,9 +70,9 @@
 .matched-user-picture{
 	height: 100%;
 	width: 100%;
-	background-repeat: no-repeat;
+	background-repeat-y: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center bottom;
     text-align: center;
     font-size: 3em;
     text-transform: capitalize;
@@ -95,4 +112,28 @@
     width: 100%;
     left: 0;
     bottom: 0;
+}
+
+@-webkit-keyframes bugChangeRight {
+    0%   {background-position-x: 0px;}
+    50%  {background-position-x: 200px;}
+    100% {background-position-x: 0px;}
+}
+
+@-webkit-keyframes bugChangeLeft {
+    0%   {background-position-x: 0px;}
+    50%  {background-position-x: -200px;}
+    100% {background-position-x: 0px;}
+}
+#match .changeRight{    
+    -webkit-animation-name: bugChangeRight;
+    -webkit-animation-iteration-count: 1;/*infinite;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 0.5s;
+}
+#match .changeLeft{    
+    -webkit-animation-name: bugChangeLeft;
+    -webkit-animation-iteration-count: 1;/*infinite;*/
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 0.5s;
 }
