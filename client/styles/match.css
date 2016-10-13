@@ -67,12 +67,17 @@
     overflow: hidden;
     z-index: -1;
 }
-.matched-user-picture{
-	height: 100%;
-	width: 100%;
-	background-repeat-y: no-repeat;
-    background-size: cover;
+#match .matched-user-picture{
+    
     background-position: center -400px;
+    
+}
+.matched-user-picture{
+    height: 100%;
+    width: 100%;
+    background-repeat-y: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
     text-align: center;
     font-size: 3em;
     text-transform: capitalize;
