@@ -72,7 +72,7 @@
 	width: 100%;
 	background-repeat-y: no-repeat;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center -300px;
     text-align: center;
     font-size: 3em;
     text-transform: capitalize;
