@@ -20,7 +20,7 @@ Meteor.startup(function () {
 							var data = {
 								from: process.env.MAIL_LOVEBOT,
 								to: receiver.email,
-								subject: "Bienvenue au LoveBot Club",
+								subject: "Bienvenue au LOVEBOT Club",
 								html: Handlebars.templates[job.data.template]({
 									firstname : receiver.firstname.capitalizeFirstLetter()
 								})
