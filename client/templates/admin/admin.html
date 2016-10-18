@@ -1,0 +1,15 @@
+<template name="admin">
+	<div id="admin">
+		<ul>
+		{{#each this}}
+			<li>{{email}} {{>buttondestroy method="destroyUser" _id=_id}}</li>
+		{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="buttondestroy">
+	<button class="btn btn-sm btn-danger" data-method="{{method}}" data-id="{{_id}}">
+		DELETE
+	</button>
+</template>
